@@ -3,6 +3,26 @@ Platforma online do zgłaszania pożarów, wypadków do straży pożarnej oraz z
 
 (projekt szkolny to tylko jest, ani trochę nie jest realne, ale może kiedyś...)
 
+## Opis podstron
+
+### Interaktywna mapa
+Mówi samo za siebie, na mapie będą pokazane obecne pożary, wypadki, położenie wozów, itp.
+
+### Znajdź remizę
+Lokalizator najbliższych 5 remiz do wpisanego adresu.
+
+### Czat z dyspozytorem AI
+Faktyczne AI to nie będzie, ale będzie można się zapytać o czas oczekiwania na przyjazd straży, ile zastępów zostało zaalarmowane, itp.
+
+### Panel naczelnika OSP
+Taki panel administratora, w tym przypadku zawsze zalogowany jako "demo", dodawanie i usuwanie strażaków, dodawanie i usuwanie wozów, zapisywanie alarmów, itp.
+
+### O nas
+Mówi samo za siebie.
+
+### Kontakt
+Mówi samo za siebie.
+
 ## Opis linków z footera
 
 ### eRemiza Premium
