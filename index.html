@@ -5,70 +5,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>eRemiza</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
 </head>
 <body>
-	<header>
-		<h2>eRemiza</h2>
-		<nav>
-			<nav-item class="btn btn-txt">Interaktywna mapa</nav-item>
-			<nav-item class="btn btn-txt">Znajdź remizę</nav-item>
-			<nav-item class="btn btn-txt">Czat z dyspozytorem AI</nav-item>
-			<nav-item class="btn btn-txt">Panel naczelnika OSP</nav-item>
-			<nav-item class="btn btn-txt">O nas</nav-item>
-			<nav-item class="btn btn-txt">Kontakt</nav-item>
-			<nav-item class="btn btn-cta">Nowe zgłoszenie</nav-item>
-		</nav>
-	</header>
+	<eremiza-header></eremiza-header>
 
 	<main>
 		<landing-banner>
 			<span class="landing-header">Szybko i bez dzwonienia zgłaszaj pożary czy wypadki</span>
 			<span>Nowoczesna i łatwa w użyciu platforma eRemiza pozwoli na szybkie wysyłanie zgłoszeń do straży pożarnej</span>
-			<div class="btn btn-cta">
+			<div class="btn btn-cta" onclick="window.location.href='new-report.html'">
 				Wyślij zgłoszenie
 			</div>
 		</landing-banner>
 	</main>
 
-	<footer>
-		<div class="footer-box">
-			<div class="footer-copyright">
-				<h4>eRemiza</h4>
-				<p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Tomasz Kamieniczny</p>
-			</div>
-			<div class="partner-sites">
-				<h4>Polecane serwisy</h4>
-				<p><span class="btn-nopad btn-txt">mKonfident</span> &ndash; companion-service do eRemiza</p>
-			</div>
-		</div>
-		<div class="footer-box">
-			<div class="eremiza-eu">
-				<h4>eRemiza Extended Universe</h4>
-				<p><span class="btn-nopad btn-txt">eRemiza Premium</span></p>
-				<p><span class="btn-nopad btn-txt">Newsletter</span></p>
-			</div>
-		</div>
-		<div class="footer-box">
-			<div class="useful-links">
-				<h4>Dla programistów</h4>
-				<p><span class="btn-nopad btn-txt">OpenRemizaAPI</span></p>
-			</div>
-		</div>
-		<div class="footer-box">
-			<div class="useful-links">
-				<h4>Przydatne linki</h4>
-				<p><span class="btn-nopad btn-txt">Repozytorium GitHub</span></p>
-				<p><span class="btn-nopad btn-txt">FAQ</span></p>
-				<p><span class="btn-nopad btn-txt">link</span></p>
-				<p><span class="btn-nopad btn-txt">link</span></p>
-			</div>
-		</div>
-	</footer>
-	<!-- secondary footer żeby opisać coś więcej bez zmiany flexa w tym pierwszym -->
-	<footer>
-		<div class="footer-box">
-			Wiem, że już istnieje takie coś jak e-remiza.pl, ale opinie na Google Play sugerują że to jest trochę tragiczny serwis i potrzebny jest jakiś lepszy.
-		</div>
-	</footer>
+	<eremiza-footer></eremiza-footer>
+
+	<script src="script.js"></script>
+	<script src="common-elements.js"></script>
 </body>
 </html>

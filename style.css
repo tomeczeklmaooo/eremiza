@@ -109,7 +109,7 @@ landing-banner
 	flex-direction: column;
 	height: 90vh;
 	gap: 20px;
-	background: url('https://d-art.ppstatic.pl/kadry/k/r/77/ee/62e980f242256_o_full.jpg') #2b2d42e1;
+	background: url('images/1.jpg') #000000b2;
 	background-size: 100%;
 	background-position: center;
 	background-blend-mode: multiply;
@@ -130,6 +130,27 @@ landing-banner span
 	text-align: center;
 }
 
+/* CONTACT */
+.contact-content
+{
+	height: 90vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.contact-content table th
+{
+	text-align: right;
+	padding: 5px 15px;
+}
+.contact-content table td
+{
+	text-align: left;
+	padding: 5px 15px;
+}
+
 /* FOOTER */
 footer
 {
@@ -142,6 +163,12 @@ footer
 footer h4
 {
 	font-family: 'Fjalla One', sans-serif;
+	user-select: none;
+}
+
+footer img
+{
+	padding: 15px 0;
 }
 
 .footer-box
