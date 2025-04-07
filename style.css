@@ -130,6 +130,44 @@ landing-banner span
 	text-align: center;
 }
 
+/* INTERACTIVE MAP */
+.intmap-content
+{
+	display: flex;
+	width: 100vw;
+	height: 90vh;
+}
+
+.map-container
+{
+	flex: 3;
+	overflow: hidden;
+	position: relative;
+	border: 1px solid #cccccc;
+}
+
+.map-wrapper
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: grab;
+	transform-origin: top left;
+}
+
+.draggable-map
+{
+	width: 613px;
+	height: 577px;
+	user-select: none;
+	pointer-events: none;
+}
+
+.map-legend
+{
+	flex: 1;
+}
+
 /* CONTACT */
 .contact-content
 {
