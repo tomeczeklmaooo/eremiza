@@ -194,11 +194,12 @@ landing-banner span
 {
 	height: 80%;
 	width: 50%;
+	padding: 5px;
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
 	overflow: auto;
-	border: 2px solid #cccccc;
+	border: 1px solid #cccccc;
 	border-radius: 12px;
 }
 
@@ -254,8 +255,16 @@ landing-banner span
 	outline: none;
 	border: none;
 	border-radius: 12px;
+	padding: 0 10px;
 	height: 100%;
 	flex: 1;
+	border-bottom: 2px solid #e6e6e6;
+	transition: 0.3s ease;
+}
+
+.chat-input-text:focus
+{
+	border-bottom: 2px solid #4a90e2;
 }
 
 .chat-input-btn
@@ -290,6 +299,33 @@ landing-banner span
 {
 	background-color: #c7c7c7;
 	cursor: pointer;
+}
+
+/* OPEN SOURCE LICENSES */
+.osl-content
+{
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.osl-content table
+{
+	border-collapse: collapse;
+}
+
+.osl-content table th
+{
+	padding: 5px 15px;
+	text-align: right;
+	border-right: 1px solid #cccccc;
+}
+.osl-content table td
+{
+	padding: 5px 15px;
+	text-align: justify;
 }
 
 /* CONTACT */

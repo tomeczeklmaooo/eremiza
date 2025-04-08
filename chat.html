@@ -19,7 +19,7 @@
 			<!-- TODO: MAKE SCROLLING WORK -->
 			<div class="chat-window" id="chat-window">
 				<div class="chat-window-dummy-spacer"></div>
-				<span class="chat-initial-information">Rozpoczynasz rozmowę z dyspozytorem AI. Dane z rozmów są zbierane, aby ulepszyć działanie tej usługi.</span>
+				<span class="chat-initial-information">Rozpoczynasz rozmowę z dyspozytorem AI.<br>Dane z rozmów są wykorzystywane zgodnie z polityką prywatności do usprawnienia działania tej usługi.<br>Rozmawiając z dyspozytorem AI zgadzasz się na przetwarzanie twoich rozmów.</span>
 			</div>
 			<div class="chat-input-bar">
 				<input type="text" id="chat-input-text" class="chat-input-text" placeholder="Wiadomość">
@@ -38,6 +38,7 @@
 
 	<script src="script.js"></script>
 	<script src="platform.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 	<script src="ai-dispatcher.js"></script>
 	<script src="common-elements.js"></script>
 </body>

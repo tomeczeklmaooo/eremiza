@@ -59,7 +59,7 @@ class eRemizaFooter extends HTMLElement {
 				<div class="footer-box">
 					<div class="useful-links">
 						<h4>Przydatne linki</h4>
-						<p><span class="btn-nopad btn-txt">Repozytorium GitHub</span></p>
+						<p><span class="btn-nopad btn-txt" onclick="window.location.href = 'https:\/\/github.com\/tomeczeklmaooo\/eremiza'">Repozytorium GitHub</span></p>
 						<p><span class="btn-nopad btn-txt">FAQ</span></p>
 						<p><span class="btn-nopad btn-txt" onclick="window.location.href = 'open-source-licenses.html'">Licencje Open-Source</span></p>
 						<p><span class="btn-nopad btn-txt">link</span></p>
