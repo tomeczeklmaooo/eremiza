@@ -36,6 +36,15 @@ header nav
 	gap: 10px;
 }
 
+#browser-alert
+{
+	text-align: center;
+	padding: 15px 5px;
+	background-color: #ff2c2c;
+	color: #ffffff;
+	display: block;
+}
+
 .btn
 {
 	padding: 10px 15px;

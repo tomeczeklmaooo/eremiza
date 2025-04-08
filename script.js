@@ -16,7 +16,15 @@ function landing_banner_image_change()
 	setTimeout(landing_banner_image_change, 10000); // 10 seconds
 }
 
+function check_browser()
+{
+	if (platform.name.toLowerCase() === 'firefox') document.getElementById('browser-alert').style.display = 'none';
+	else document.getElementById('browser-alert').innerHTML = `Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})`;
+}
+
+
 window.onload = function()
 {
+	check_browser();
 	landing_banner_image_change();
 }

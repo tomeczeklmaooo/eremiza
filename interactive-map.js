@@ -68,7 +68,7 @@ map_container.addEventListener('wheel', (e) => {
 
 	const scale_old = scale;
 	scale += e.deltaY > 0 ? -zoom_level_change : zoom_level_change;
-	scale = clamp(scale, 1.4, 10);
+	scale = clamp(scale, 1.4, 15);
 
 	translateX = mouseX - ((mouseX - translateX) / scale_old) * scale;
 	translateY = mouseY - ((mouseY - translateY) / scale_old) * scale;

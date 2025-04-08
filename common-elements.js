@@ -1,5 +1,15 @@
 var current_year = new Date().getFullYear();
 
+class eRemizaBrowserAlert extends HTMLElement {
+	connectedCallback() {
+		this.innerHTML = `
+			<div id="browser-alert">
+				Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})
+			</div>
+			`;
+	}
+}
+
 class eRemizaHeader extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
@@ -51,7 +61,7 @@ class eRemizaFooter extends HTMLElement {
 						<h4>Przydatne linki</h4>
 						<p><span class="btn-nopad btn-txt">Repozytorium GitHub</span></p>
 						<p><span class="btn-nopad btn-txt">FAQ</span></p>
-						<p><span class="btn-nopad btn-txt">link</span></p>
+						<p><span class="btn-nopad btn-txt" onclick="window.location.href = 'open-source-licenses.html'">Licencje Open-Source</span></p>
 						<p><span class="btn-nopad btn-txt">link</span></p>
 					</div>
 				</div>
@@ -67,5 +77,6 @@ class eRemizaFooter extends HTMLElement {
 }
 
 
+customElements.define("eremiza-browser-alert", eRemizaBrowserAlert);
 customElements.define("eremiza-header", eRemizaHeader);
 customElements.define("eremiza-footer", eRemizaFooter);
