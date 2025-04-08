@@ -21,6 +21,7 @@ function send_message(type, message)
 function send_user_message()
 {
 	var user_message = document.getElementById('chat-input-text').value;
+	if (user_message === '') return;
 	send_message('user', user_message);
 	document.getElementById('chat-input-text').value = '';
 	setTimeout(function() {
