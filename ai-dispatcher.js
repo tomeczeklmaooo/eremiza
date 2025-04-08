@@ -3,16 +3,34 @@ function send_message(type, message)
 {
 	var chat_window = document.getElementById('chat-window');
 	var message_div = document.createElement('div');
+	var sender = (type === 'user') ? 'demo' : 'Dyspozytor AI';
+	var date = new Date();
+	var year = lt10(date.getFullYear());
+	var month = lt10(date.getMonth() + 1);
+	var day = lt10(date.getDate());
+	var hour = lt10(date.getHours());
+	var minute = lt10(date.getMinutes());
+	var second = lt10(date.getSeconds());
+	var timestamp = `${day}/${month}/${year} ${hour}:${minute}:${second}`;
 	message_div.setAttribute('class', `chat-message-${type}`);
-	message_div.innerHTML = `<strong>${type}</strong><br>${message}`;
+	message_div.innerHTML = `<strong>${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}`;
 	chat_window.appendChild(message_div);
-	message_div.scrollIntoView();
+	chat_window.scrollTop = chat_window.scrollHeight;
 }
 
 function send_user_message()
 {
 	var user_message = document.getElementById('chat-input-text').value;
 	send_message('user', user_message);
+	setTimeout(function() {
+		get_ai_response();
+	}, 1000);
+}
+
+function get_ai_response()
+{
+	var random = random_int(0, 2);
+	send_message('ai', ai_responses.unrecognizable_message[random]);
 }
 
 const ai_responses = {

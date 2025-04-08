@@ -17,16 +17,17 @@
 		<div class="chat-content">
 			<h2 style="text-align: center;">Czat z dyspozytorem AI</h2>
 			<!-- TODO: MAKE SCROLLING WORK -->
-			<div class="chat-window chat-common" id="chat-window">
+			<div class="chat-window" id="chat-window">
+				<div class="chat-window-dummy-spacer"></div>
 				<span class="chat-initial-information">Rozpoczynasz rozmowę z dyspozytorem AI. Dane z rozmów są zbierane, aby ulepszyć działanie tej usługi.</span>
 			</div>
-			<div class="chat-input-bar chat-common">
+			<div class="chat-input-bar">
 				<input type="text" id="chat-input-text" class="chat-input-text" placeholder="Wiadomość">
 				<!-- TODO: ATTACHMENT BUTTON GRAY COLOR -->
-				<button class="chat-input-btn">
+				<button class="chat-input-btn chat-input-attachment-btn">
 					<i class="fa-solid fa-paperclip"></i>
 				</button>
-				<button class="chat-input-btn" onclick="send_user_message()">
+				<button class="chat-input-btn chat-input-send-btn" onclick="send_user_message()">
 					<i class="fa-solid fa-paper-plane"></i>
 				</button>
 			</div>
