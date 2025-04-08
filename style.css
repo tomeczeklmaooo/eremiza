@@ -101,6 +101,7 @@ header nav
 .btn-cta:hover
 {
 	background-color: #a1c6ff;
+	cursor: pointer;
 }
 
 /* MAIN */
@@ -175,6 +176,98 @@ landing-banner span
 .map-legend
 {
 	flex: 1;
+}
+
+/* AI CHAT */
+.chat-content
+{
+	display: flex;
+	width: 100vw;
+	height: 90vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.chat-window
+{
+	height: 80%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	gap: 5px;
+	overflow: auto;
+}
+
+.chat-initial-information
+{
+	opacity: 0.5;
+	width: 100%;
+	text-align: center;
+	user-select: none;
+}
+
+.chat-message-user
+{
+	background-color: #4a90e2;
+	border-radius: 8px;
+	width: 40%;
+	color: #ffffff;
+	padding: 5px 15px;
+}
+
+.chat-message-ai
+{
+	background-color: #f1f1f1;
+	border-radius: 8px;
+	padding: 5px 15px;
+}
+
+.chat-input-bar
+{
+	height: 5%;
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.chat-input-text
+{
+	background-color: #e6e6e6;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	height: 100%;
+	flex: 1;
+}
+
+.chat-input-btn
+{
+	color: #ffffff;
+	background-color: #4a90e2;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	height: 100%;
+	padding: 0 25px;
+	font-size: 12pt;
+	user-select: none;
+	transition: 0.3s ease;
+}
+
+.chat-input-btn:hover
+{
+	background-color: #a1c6ff;
+	cursor: pointer;
+}
+
+.chat-common
+{
+	width: 50%;
+	border: 2px solid #cccccc;
+	border-radius: 12px;
 }
 
 /* CONTACT */

@@ -6,6 +6,7 @@
 	<title>eRemiza</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
+	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<eremiza-browser-alert></eremiza-browser-alert>
@@ -13,13 +14,30 @@
 	<eremiza-header></eremiza-header>
 
 	<main>
-		Czat z dyspozytorem AI
+		<div class="chat-content">
+			<h2 style="text-align: center;">Czat z dyspozytorem AI</h2>
+			<!-- TODO: MAKE SCROLLING WORK -->
+			<div class="chat-window chat-common" id="chat-window">
+				<span class="chat-initial-information">Rozpoczynasz rozmowę z dyspozytorem AI. Dane z rozmów są zbierane, aby ulepszyć działanie tej usługi.</span>
+			</div>
+			<div class="chat-input-bar chat-common">
+				<input type="text" id="chat-input-text" class="chat-input-text" placeholder="Wiadomość">
+				<!-- TODO: ATTACHMENT BUTTON GRAY COLOR -->
+				<button class="chat-input-btn">
+					<i class="fa-solid fa-paperclip"></i>
+				</button>
+				<button class="chat-input-btn" onclick="send_user_message()">
+					<i class="fa-solid fa-paper-plane"></i>
+				</button>
+			</div>
+		</div>
 	</main>
 
 	<eremiza-footer></eremiza-footer>
 
 	<script src="script.js"></script>
 	<script src="platform.js"></script>
+	<script src="ai-dispatcher.js"></script>
 	<script src="common-elements.js"></script>
 </body>
 </html>
