@@ -1,0 +1,33 @@
+{
+	"results": {
+		"station_name": "NAZWA REMIZY",
+		"station_id": "OSP IDENTYFIKATOR",
+		"location": {
+			"city": "MIEJSCOWOŚĆ",
+			"state": "WOJEWÓDZTWO",
+			"coordinates": {
+				"latitude": 0.00000,
+				"longitude": 0.00000
+			}
+		},
+		"status": {
+			"operational": true,
+			"last_inspection": "N/A",
+			"next_inspection_due": "N/A"
+		},
+		"resources": {
+			"personnel_on_duty": 0,
+			"fire_engines_available": 0,
+			"ambulances_available": 0,
+			"ladder_trucks_available": 0
+		},
+		"recent_activity": {
+			"calls_today": 0,
+			"last_call": {
+				"type": "None",
+				"time": "N/A"
+			}
+		}
+	},
+	"status": "OK"
+}

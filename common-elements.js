@@ -53,7 +53,7 @@ class eRemizaFooter extends HTMLElement {
 				<div class="footer-box">
 					<div class="useful-links">
 						<h4>Dla programistów</h4>
-						<p><span class="btn-nopad btn-txt">OpenRemizaAPI</span></p>
+						<p><span class="btn-nopad btn-txt" onclick="window.location.href = 'api_response.json'">OpenRemizaAPI</span></p>
 					</div>
 				</div>
 				<div class="footer-box">
