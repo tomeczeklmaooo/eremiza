@@ -22,6 +22,7 @@ function send_user_message()
 {
 	var user_message = document.getElementById('chat-input-text').value;
 	send_message('user', user_message);
+	document.getElementById('chat-input-text').value = '';
 	setTimeout(function() {
 		get_ai_response();
 	}, 1000);
