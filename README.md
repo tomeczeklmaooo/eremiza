@@ -3,6 +3,8 @@ Platforma online do zgłaszania pożarów, wypadków do straży pożarnej oraz z
 
 (projekt szkolny to tylko jest, ani trochę nie jest realne, ale może kiedyś...)
 
+A no i to ani trochę nie będzie się skalować bo patrząc na CSS, który napisałem to się lekko odechciewa :)
+
 ## Opis podstron
 
 ### Interaktywna mapa
@@ -29,9 +31,16 @@ Mówi samo za siebie.
 Ani trochę prawdziwe to nie jest, taki wyśmiewanie się trochę z tego, że teraz prawie wszystko ma subskrypcję premium
 
 ### Newsletter
-Nie mam pojęcia kto chciałby się na to zapisać, tutaj po kliknięciu w link i wpisaniu maila zostanie wysłana jednorazowo wiadomość i to tyle.
+Nie mam pojęcia kto chciałby się na to zapisać, tutaj po kliknięciu w link i wpisaniu maila zostanie wysłana jednorazowo wiadomość i to tyle. (fake)
 
 ### OpenRemizaAPI
 W założeniu ma zwracać informacje o wybranej remizie, np. ilość wozów na akcji/w remizie, ostatni alarm, itp., ale tak na serio to będzie zawsze zwracać zawartość pliku `api/response.json`, czyli jakieś fake informacje.
 
 ### Repozytorium GitHub
+Mówi samo za siebie
+
+### FAQ
+Często zadawane pytania, tutaj będzie bardziej jako wyjaśnienie, że ta strona to ewidentny żart jest
+
+### Licencje Open-Source
+Lista bibliotek JS, które zostały użyte

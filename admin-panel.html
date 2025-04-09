@@ -9,15 +9,21 @@
 	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<eremiza-browser-alert></eremiza-browser-alert>
-
-	<eremiza-header></eremiza-header>
-
 	<main>
-		Panel naczelnika OSP
+		<div class="admin-content">
+			<header>
+				<img src="images/eremiza-logo-small.png" alt="eremiza logo" onclick="window.location.href = 'index.html'">
+				<h3>Panel naczelnika OSP</h3>
+				<span class="admin-header-notify-text">
+					Używasz trybu demo. Wszystkie wprowadzone zmiany zostaną cofnięte po wyjściu z tej podstrony.
+				</span>
+			</header>
+			<div class="admin-main-container">
+				<div class="admin-navigation"></div>
+				<div class="admin-settings-display"></div>
+			</div>
+		</div>
 	</main>
-
-	<eremiza-footer></eremiza-footer>
 
 	<script src="script.js"></script>
 	<script src="platform.js"></script>

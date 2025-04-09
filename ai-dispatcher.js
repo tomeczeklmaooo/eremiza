@@ -47,33 +47,45 @@ const keywords = {
 		'thanks',
 		'dzięki',
 		'dziena'
+	],
+	// STATUS KEYWORDS
+	status: [
+		'status',
+		'alarm',
+	],
+	// FUN KEYWORDS
+	fun: [
+		'meow'
 	]
 };
 
 const ai_responses = {
 	// GREETING MESSAGES
 	greet: [
-		"Cześć! W czym mogę pomóc?",
-		"Witaj! W czym mogę pomóc?"
+		'Cześć! W czym mogę pomóc?',
+		'Witaj! W czym mogę pomóc?'
 	],
 	// FAREWELL MESSAGES
 	farewell: [
-		"Miło było Ci pomóc!",
-		"Do zobaczenia wkrótce!",
-		"Bye bye!"
+		'Miło było Ci pomóc!',
+		'Do zobaczenia wkrótce!',
+		'Bye bye!'
 	],
 	// STATUS MESSAGES
 	status: [
-		"Wskazana przez ciebie jednostka ma status OCZEKIWANIE NA ALARM",
-		"Wskazana przez ciebie jednostka ma status WYJAZD NA AKCJĘ",
-		"Wskazana przez ciebie jednostka miała ostatni alarm DATA+GODZINA",
-		"Wskazana przez ciebie jednostka nie istnieje."
+		'Wskazana przez ciebie jednostka ma status OCZEKIWANIE NA ALARM',
+		'Wskazana przez ciebie jednostka ma status WYJAZD NA AKCJĘ',
+		'Wskazana przez ciebie jednostka miała ostatni alarm DATA+GODZINA'
+	],
+	// FUN RESPONSES
+	fun: [
+		'meow'
 	],
 	// UNRECOGNIZABLE_USER_MESSAGE MESSAGES
 	unrecognizable_message: [
-		"Nie rozumiem. Napisz jeszcze raz.",
-		"Nie mogę rozpoznać słów kluczowych w twojej wiadomości. Spróbuj ponownie.",
-		"Nie mogę odpowiedzieć na twoją wiadomość, brakuje w niej informacji."
+		'Nie rozumiem. Napisz jeszcze raz.',
+		'Nie mogę rozpoznać słów kluczowych w twojej wiadomości. Spróbuj ponownie.',
+		'Nie mogę odpowiedzieć na twoją wiadomość, brakuje w niej informacji.'
 	]
 };
 
@@ -118,7 +130,7 @@ function fuse_get_best_match(input, keywords)
 {
 	const fuse = new Fuse(keywords, {
 		includeScore: true,
-		threshold: 0.3, // how strict is the search, 0.0 - exact matches, 1.0 - loose matches
+		threshold: 0.5, // how strict is the search, 0.0 - exact matches, 1.0 - loose matches
 		distance: 100,
 		keys: ['word']
 	});
@@ -140,7 +152,9 @@ function fuse_get_best_match(input, keywords)
 
 const fuse_keywords = {
 	greet: keywords.greet.map(word => ({ word })),
-	farewell: keywords.farewell.map(word => ({ word }))
+	farewell: keywords.farewell.map(word => ({ word })),
+	status: keywords.status.map(word => ({ word })),
+	fun: keywords.fun.map(word => ({ word }))
 };
 
 function get_ai_response()
@@ -156,6 +170,28 @@ function get_ai_response()
 	if (match && match.score < 0.3)
 	{
 		send_message('ai', ai_responses.farewell[random_int(0, ai_responses.farewell.length - 1)]);
+		return;
+	}
+
+	match = fuse_get_best_match(stored_user_message, fuse_keywords.status);
+	if (match && match.score < 0.3)
+	{
+		if (match['item']['word'] === 'status')
+		{
+			send_message('ai', ai_responses.status[random_int(0, 1)]);
+			return;
+		}
+		else if (match['item']['word'] === 'alarm')
+		{
+			send_message('ai', ai_responses.status[2]);
+			return;
+		}
+	}
+
+	match = fuse_get_best_match(stored_user_message, fuse_keywords.fun);
+	if (match && match.score < 0.3)
+	{
+		send_message('ai', ai_responses.fun[random_int(0, ai_responses.fun.length - 1)]);
 		return;
 	}
 

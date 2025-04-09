@@ -301,6 +301,67 @@ landing-banner span
 	cursor: pointer;
 }
 
+/* ADMIN PANEL */
+.admin-content
+{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.admin-content header
+{
+	width: 100%;
+	height: 3vh;
+	padding: 15px 0;
+}
+
+.admin-content header img
+{
+	width: 45px;
+	margin: 0 15px;
+}
+
+.admin-content header h3
+{
+	flex: 1;
+	user-select: none;
+}
+
+.admin-content header .admin-header-notify-text
+{
+	margin: 0 15px;
+	opacity: 0.5;
+	user-select: none;
+}
+
+.admin-content .admin-main-container
+{
+	width: 100vw;
+	height: 97vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.admin-content .admin-main-container .admin-navigation
+{
+	background-color: #f1f1f1;
+	width: 15vw;
+	height: 100%;
+}
+
+.admin-content .admin-main-container .admin-settings-display
+{
+	width: 100%;
+	height: 100%;
+	background-color: #e0e0e0;
+}
+
 /* OPEN SOURCE LICENSES */
 .osl-content
 {
