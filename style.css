@@ -104,6 +104,25 @@ header nav
 	cursor: pointer;
 }
 
+table
+{
+	border-collapse: collapse;
+	max-width: 70%;
+}
+
+table th
+{
+	padding: 5px 15px;
+	text-align: right;
+	width: 200px;
+	border-right: 1px solid #cccccc;
+}
+table td
+{
+	padding: 5px 15px;
+	text-align: justify;
+}
+
 /* MAIN */
 main
 {
@@ -419,21 +438,14 @@ landing-banner span
 	align-items: center;
 }
 
-.osl-content table
+/* CONTACT */
+.about-content
 {
-	border-collapse: collapse;
-}
-
-.osl-content table th
-{
-	padding: 5px 15px;
-	text-align: right;
-	border-right: 1px solid #cccccc;
-}
-.osl-content table td
-{
-	padding: 5px 15px;
-	text-align: justify;
+	height: 90vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 /* CONTACT */
@@ -444,17 +456,6 @@ landing-banner span
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
-}
-
-.contact-content table th
-{
-	text-align: right;
-	padding: 5px 15px;
-}
-.contact-content table td
-{
-	text-align: left;
-	padding: 5px 15px;
 }
 
 /* FOOTER */
