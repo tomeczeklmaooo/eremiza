@@ -163,7 +163,7 @@ landing-banner span
 .intmap-content
 {
 	display: flex;
-	width: 100vw;
+	width: 100%;
 	height: 90vh;
 }
 
@@ -195,6 +195,14 @@ landing-banner span
 .map-legend
 {
 	flex: 1;
+	padding: 0 15px;
+}
+
+.map-legend ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 /* AI CHAT */
@@ -419,6 +427,12 @@ landing-banner span
 	opacity: 0;
 	user-select: none;
 	animation: arrow_opacity 3s ease infinite;
+}
+
+.admin-content .admin-main-container .admin-settings-display .admin-settings-display-anim-arrows span
+{
+	color: #e0e0e0;
+	text-shadow: 2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333, 1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333;
 }
 
 @keyframes arrow_opacity

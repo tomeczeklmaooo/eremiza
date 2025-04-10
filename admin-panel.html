@@ -20,10 +20,10 @@
 			</header>
 			<div class="admin-main-container">
 				<div class="admin-navigation">
-					<div class="admin-navigation-item"><i class="fa-solid fa-house-fire"></i>&emsp;Zarządzaj remizą</div>
-					<div class="admin-navigation-item"><i class="fa-solid fa-person"></i>&emsp;Zarządzaj strażakami</div>
-					<div class="admin-navigation-item"><i class="fa-solid fa-car"></i>&emsp;Zarządzaj wozami</div>
-					<div class="admin-navigation-item"><i class="fa-solid fa-bell"></i>&emsp;Ostatnie alarmy</div>
+					<div class="admin-navigation-item" onclick="change_display_content(0)"><i class="fa-solid fa-house-fire"></i>&emsp;Zarządzaj remizą</div>
+					<div class="admin-navigation-item" onclick="change_display_content(1)"><i class="fa-solid fa-person"></i>&emsp;Zarządzaj strażakami</div>
+					<div class="admin-navigation-item" onclick="change_display_content(2)"><i class="fa-solid fa-car"></i>&emsp;Zarządzaj wozami</div>
+					<div class="admin-navigation-item" onclick="change_display_content(3)"><i class="fa-solid fa-bell"></i>&emsp;Ostatnie alarmy</div>
 				</div>
 				<div class="admin-settings-display">
 					<span class="admin-settings-display-information">Tu się pokażą ustawienia. Wybierz kategorię z panelu po lewej stronie.</span>
@@ -40,5 +40,6 @@
 	<script src="script.js"></script>
 	<script src="platform.js"></script>
 	<script src="common-elements.js"></script>
+	<script src="admin.js"></script>
 </body>
 </html>
