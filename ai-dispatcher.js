@@ -126,11 +126,13 @@ user_message.addEventListener('keypress', (e) => {
 	}
 })
 
+const fuse_match_threshold = 0.5; // how strict is the search, 0.0 - exact matches, 1.0 - loose matches
+
 function fuse_get_best_match(input, keywords)
 {
 	const fuse = new Fuse(keywords, {
 		includeScore: true,
-		threshold: 0.5, // how strict is the search, 0.0 - exact matches, 1.0 - loose matches
+		threshold: fuse_match_threshold,
 		distance: 100,
 		keys: ['word']
 	});
@@ -160,21 +162,21 @@ const fuse_keywords = {
 function get_ai_response()
 {
 	var match = fuse_get_best_match(stored_user_message, fuse_keywords.greet);
-	if (match && match.score < 0.3)
+	if (match && match.score < fuse_match_threshold)
 	{
 		send_message('ai', ai_responses.greet[random_int(0, ai_responses.greet.length - 1)]);
 		return;
 	}
 
 	match = fuse_get_best_match(stored_user_message, fuse_keywords.farewell);
-	if (match && match.score < 0.3)
+	if (match && match.score < fuse_match_threshold)
 	{
 		send_message('ai', ai_responses.farewell[random_int(0, ai_responses.farewell.length - 1)]);
 		return;
 	}
 
 	match = fuse_get_best_match(stored_user_message, fuse_keywords.status);
-	if (match && match.score < 0.3)
+	if (match && match.score < fuse_match_threshold)
 	{
 		if (match['item']['word'] === 'status')
 		{
@@ -189,7 +191,7 @@ function get_ai_response()
 	}
 
 	match = fuse_get_best_match(stored_user_message, fuse_keywords.fun);
-	if (match && match.score < 0.3)
+	if (match && match.score < fuse_match_threshold)
 	{
 		send_message('ai', ai_responses.fun[random_int(0, ai_responses.fun.length - 1)]);
 		return;
