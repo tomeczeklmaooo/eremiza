@@ -384,6 +384,7 @@ landing-banner span
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	background-color: #e0e0e0;
 	border-radius: 8px 0 0 0;
 }
@@ -392,6 +393,20 @@ landing-banner span
 {
 	opacity: 0.5;
 	user-select: none;
+}
+
+.admin-content .admin-main-container .admin-settings-display .admin-settings-display-anim-arrows
+{
+	opacity: 0;
+	user-select: none;
+	animation: arrow_opacity 3s ease infinite;
+}
+
+@keyframes arrow_opacity
+{
+	0%   { opacity: 0; }
+	50%  { opacity: 0.5; }
+	100% { opacity: 0; }
 }
 
 /* OPEN SOURCE LICENSES */
