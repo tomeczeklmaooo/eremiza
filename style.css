@@ -205,6 +205,123 @@ landing-banner span
 	margin: 0;
 }
 
+/* FIND FIREDEPT */
+.fmap-content
+{
+	display: flex;
+	width: 100%;
+	height: 90vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.fmap-container
+{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: row;
+}
+
+#osm-map
+{
+	width: 70%;
+	height: 100%;
+}
+
+.fmap-sidebar
+{
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.fmap-inputs
+{
+	width: 100%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.find-input-bar
+{
+	height: 5%;
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.find-input-text
+{
+	background-color: #e6e6e6;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	padding: 0 10px;
+	height: 40px;
+	border-bottom: 2px solid #e6e6e6;
+	transition: 0.3s ease;
+}
+
+.find-input-text:focus
+{
+	border-bottom: 2px solid #4a90e2;
+}
+
+.find-input-btn
+{
+	color: #ffffff;
+	background-color: #4a90e2;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	height: 40px;
+	padding: 0 25px;
+	font-size: 12pt;
+	user-select: none;
+	transition: 0.3s ease;
+}
+.find-input-btn:hover
+{
+	background-color: #a1c6ff;
+	cursor: pointer;
+}
+
+#found-depts
+{
+	margin: 15px 0;
+	padding: 0 15px;
+	width: calc(100% - 30px);
+}
+
+.fmap-legend
+{
+	width: 100%;
+	height: 20%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.fmap-legend ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.marker-icon
+{
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+}
+
 /* AI CHAT */
 .chat-content
 {

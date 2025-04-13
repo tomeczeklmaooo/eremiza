@@ -16,7 +16,7 @@ class eRemizaHeader extends HTMLElement {
 			<header>
 				<img src="images/eremiza-logo-large.png" alt="logo" height="70px" onclick="window.location.href = 'index.html'">
 				<nav>
-					<nav-item class="btn btn-txt" onclick="window.location.href = 'interactive-map.html'">Interaktywna mapa</nav-item>
+					<!--<nav-item class="btn btn-txt" onclick="window.location.href = 'interactive-map.html'">Interaktywna mapa</nav-item>-->
 					<nav-item class="btn btn-txt" onclick="window.location.href = 'find-firedept.html'">Znajdź remizę</nav-item>
 					<nav-item class="btn btn-txt" onclick="window.location.href = 'chat.html'">Czat z dyspozytorem AI</nav-item>
 					<nav-item class="btn btn-txt" onclick="window.location.href = 'admin-panel.html'">Panel naczelnika OSP</nav-item>
@@ -53,7 +53,7 @@ class eRemizaFooter extends HTMLElement {
 				<div class="footer-box">
 					<div class="useful-links">
 						<h4>Dla programistów</h4>
-						<p><span class="btn-nopad btn-txt" onclick="window.location.href = 'api_response.json'">OpenRemizaAPI</span></p>
+						<p><span class="btn-nopad btn-txt" onclick="window.location.href = '/api/response.json'">OpenRemizaAPI</span></p>
 					</div>
 				</div>
 				<div class="footer-box">
