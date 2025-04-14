@@ -377,6 +377,16 @@ landing-banner span
 	border-radius: 8px;
 	max-width: 70%;
 	padding: 5px 15px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	flex-direction: row;
+}
+
+.chat-message-ai img
+{
+	width: 32px;
+	height: 32px;
 }
 
 .timestamp

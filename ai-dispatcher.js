@@ -180,7 +180,14 @@ function send_message(type, message)
 	var second = lt10(date.getSeconds());
 	var timestamp = `${day}/${month}/${year} ${hour}:${minute}:${second}`;
 	message_div.setAttribute('class', `chat-message-${type}`);
-	message_div.innerHTML = `<strong>${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}`;
+	if (type === 'ai')
+	{
+		message_div.innerHTML = `<img src="images/eremiza-logo-small.png" alt="icon"><div><strong>${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}</div>`;
+	}
+	else
+	{
+		message_div.innerHTML = `<strong>${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}`;
+	}
 	chat_window.appendChild(message_div);
 	chat_window.scrollTop = chat_window.scrollHeight;
 }
