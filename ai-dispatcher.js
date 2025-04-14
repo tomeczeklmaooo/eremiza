@@ -56,6 +56,10 @@ const keywords = {
 	// FUN KEYWORDS
 	fun: [
 		'meow'
+	],
+	// HELP KEYWORDS
+	help: [
+		'pomoc'
 	]
 };
 
@@ -81,6 +85,10 @@ const ai_responses = {
 	fun: [
 		'meow'
 	],
+	// HELP RESPONSES
+	help: [
+		'HELP_MESSAGE'
+	],
 	// UNRECOGNIZABLE_USER_MESSAGE MESSAGES
 	unrecognizable_message: [
 		'Nie rozumiem. Napisz jeszcze raz.',
@@ -88,6 +96,18 @@ const ai_responses = {
 		'Nie mogę odpowiedzieć na twoją wiadomość, brakuje w niej informacji.'
 	]
 };
+
+const unit_status = [
+	'Oczekiwanie',
+	'Wyjazd na akcję',
+	'Wycofanie z akcji - powrót do remizy',
+	'Niedostępna'
+];
+
+function get_random_unit_status()
+{
+	return unit_status[random_int(0, unit_status.length - 1)];
+}
 
 function send_message(type, message)
 {
@@ -156,7 +176,8 @@ const fuse_keywords = {
 	greet: keywords.greet.map(word => ({ word })),
 	farewell: keywords.farewell.map(word => ({ word })),
 	status: keywords.status.map(word => ({ word })),
-	fun: keywords.fun.map(word => ({ word }))
+	fun: keywords.fun.map(word => ({ word })),
+	help: keywords.help.map(word => ({ word }))
 };
 
 function get_ai_response()
@@ -194,6 +215,13 @@ function get_ai_response()
 	if (match && match.score < fuse_match_threshold)
 	{
 		send_message('ai', ai_responses.fun[random_int(0, ai_responses.fun.length - 1)]);
+		return;
+	}
+
+	match = fuse_get_best_match(stored_user_message, fuse_keywords.help);
+	if (match && match.score < fuse_match_threshold)
+	{
+		send_message('ai', ai_responses.help[random_int(0, ai_responses.help.length - 1)]);
 		return;
 	}
 

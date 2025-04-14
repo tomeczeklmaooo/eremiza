@@ -46,8 +46,8 @@ class eRemizaFooter extends HTMLElement {
 				<div class="footer-box">
 					<div class="eremiza-eu">
 						<h4>eRemiza Extended Universe</h4>
-						<p><span class="btn-nopad btn-txt">eRemiza Premium</span></p>
-						<p><span class="btn-nopad btn-txt">Newsletter</span></p>
+						<p><span class="btn-nopad btn-txt" onclick="alert('jedyne 159.99 miesięcznie, albo 1499.99 rocznie (oszczędzasz 22%)')">eRemiza Premium</span></p>
+						<p><span class="btn-nopad btn-txt" onclick="alert('haha xd')">Newsletter</span></p>
 					</div>
 				</div>
 				<div class="footer-box">
