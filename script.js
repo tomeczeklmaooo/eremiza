@@ -27,8 +27,11 @@ function landing_banner_image_change()
 
 function check_browser()
 {
-	if (platform.name.toLowerCase() === 'firefox') document.getElementById('browser-alert').style.display = 'none';
-	else document.getElementById('browser-alert').innerHTML = `Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})`;
+	if (document.getElementById('browser-alert'))
+	{
+		if (platform.name.toLowerCase() === 'firefox') document.getElementById('browser-alert').style.display = 'none';
+		else document.getElementById('browser-alert').innerHTML = `Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})`;
+	}
 }
 
 function random_int(min, max)

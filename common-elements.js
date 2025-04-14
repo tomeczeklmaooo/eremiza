@@ -19,7 +19,7 @@ class eRemizaHeader extends HTMLElement {
 					<!--<nav-item class="btn btn-txt" onclick="window.location.href = 'interactive-map.html'">Interaktywna mapa</nav-item>-->
 					<nav-item class="btn btn-txt" onclick="window.location.href = 'find-firedept.html'">Znajdź remizę</nav-item>
 					<nav-item class="btn btn-txt" onclick="window.location.href = 'chat.html'">Czat z dyspozytorem AI</nav-item>
-					<nav-item class="btn btn-txt" onclick="window.location.href = 'admin-panel.html'">Panel naczelnika OSP</nav-item>
+					<nav-item class="btn btn-txt" onclick="window.location.href = 'login.html'">Panel naczelnika OSP</nav-item>
 					<nav-item class="btn btn-txt" onclick="window.location.href = 'about.html'">O nas</nav-item>
 					<nav-item class="btn btn-txt" onclick="window.location.href = 'contact.html'">Kontakt</nav-item>
 					<nav-item class="btn btn-cta" onclick="window.location.href = 'new-report.html'">Nowe zgłoszenie</nav-item>

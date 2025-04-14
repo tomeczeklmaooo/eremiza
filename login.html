@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>eRemiza</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
+	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<main>
+		<div class="login-content">
+			<h2>Logowanie</h2>
+			<div class="login-window">
+				<div class="login-input-group">
+					<span>Nazwa użytkownika</span>
+					<input type="text" id="login-input-text-username" class="login-input-text">
+				</div>
+				<div class="login-input-group">
+					<span>Hasło</span>
+					<input type="password" id="login-input-text-password" class="login-input-text">
+				</div>
+				<div class="login-input-group">
+					<button class="find-input-btn" onclick="login_manager()">
+						Zaloguj się
+					</button>
+				</div>
+			</div>
+			<span style="opacity: 0.5;">Użyj nazwy użytkownika <b>demo</b> z hasłem <b>kochamszymka</b>, żeby się zalogować.</span>
+			<div class="invalid-login-credentials-alert">Nieprawidłowe dane logowania. Sprawdź nazwę użytkownika i hasło, a następnie spróbuj ponownie.</div>
+		</div>
+
+	</main>
+
+	<script src="script.js"></script>
+	<script src="platform.js"></script>
+	<script src="login-service.js"></script>
+	<script src="common-elements.js"></script>
+</body>
+</html>
