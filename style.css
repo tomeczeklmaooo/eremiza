@@ -670,6 +670,12 @@ landing-banner span
 	flex-direction: row;
 }
 
+#contact-map
+{
+	width: 500px;
+	height: 500px;
+}
+
 /* FOOTER */
 footer
 {
