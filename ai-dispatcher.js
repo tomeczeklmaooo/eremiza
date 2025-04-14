@@ -87,7 +87,7 @@ const ai_responses = {
 	],
 	// HELP RESPONSES
 	help: [
-		'HELP_MESSAGE'
+		'Żeby zobaczyć status danej jednostki, wpisz <b>status MIEJSCOWOŚĆ</b> (zastąp MIEJSCOWOŚĆ faktyczną nazwą, np. Poznań).<br>Żeby zobaczyć ostatnie 5 alarmów danej jednostki, komenda wygląda analogicznie do statusu, tylko zastąp słowo kluczowe <b>status</b> słowem <b>alarm</b>'
 	],
 	// UNRECOGNIZABLE_USER_MESSAGE MESSAGES
 	unrecognizable_message: [
@@ -97,10 +97,67 @@ const ai_responses = {
 	]
 };
 
+let units_list = [];
+
+function load_units(url, label)
+{
+	Papa.parse(url, {
+		download: true,
+		header: true,
+		complete: function(results)
+		{
+			results.data.forEach(unit => {
+				const lat_str = unit['y'];
+				const lon_str = unit['x'];
+				if (lat_str && lon_str)
+				{
+					const lat = parseFloat(lat_str);
+					const lon = parseFloat(lon_str);
+
+					if (!isNaN(lat) && !isNaN(lon))
+					{
+						units_list.push({
+							type: label,
+							name: unit['Nazwa'],
+							city: unit['Miejscowość'],
+							region: unit['Województwo'] || '',
+							county: unit['Powiat'] || '',
+							address: unit['Adres'] || '',
+							coordinates: { lat: lat, lon: lon }
+						});
+					}
+				}
+			});
+		}
+	});
+}
+
+load_units('data/osp.csv', 'OSP');
+load_units('data/psp.csv', 'PSP');
+
+function parse_user_message(input)
+{
+	// quotes
+	input = input.trim().toLowerCase();
+	const match = input.match(/^(status|alarm)\s+"(.+)"$/);
+
+	if (match) return { type: match[1], location: match[2] };
+
+	// spaces
+	const words = input.split(/\s+/);
+	const keyword = words[0];
+	const location = words.slice(1).join(' ');
+
+	if (keyword === 'status') return { type: 'status', location: location };
+	else if (keyword === 'alarm') return { type: 'alarm', location: location };
+	else return { type: 'unknown', location: null };
+}
+
 const unit_status = [
 	'Oczekiwanie',
 	'Wyjazd na akcję',
-	'Wycofanie z akcji - powrót do remizy',
+	'Wycofanie z akcji',
+	'Powrót do remizy',
 	'Niedostępna'
 ];
 
@@ -146,14 +203,15 @@ user_message.addEventListener('keypress', (e) => {
 	}
 })
 
-const fuse_match_threshold = 0.5; // how strict is the search, 0.0 - exact matches, 1.0 - loose matches
+const fuse_match_threshold = 0.4; // how strict is the search, 0.0 - exact matches, 1.0 - loose matches
+const fuse_match_distance = 50;
 
 function fuse_get_best_match(input, keywords)
 {
 	const fuse = new Fuse(keywords, {
 		includeScore: true,
 		threshold: fuse_match_threshold,
-		distance: 100,
+		distance: fuse_match_distance,
 		keys: ['word']
 	});
 
@@ -199,15 +257,22 @@ function get_ai_response()
 	match = fuse_get_best_match(stored_user_message, fuse_keywords.status);
 	if (match && match.score < fuse_match_threshold)
 	{
-		if (match['item']['word'] === 'status')
+		const parsed_user_message = parse_user_message(stored_user_message);
+		for (var i = 0; i < units_list.length; i++)
 		{
-			send_message('ai', ai_responses.status[random_int(0, 1)]);
-			return;
-		}
-		else if (match['item']['word'] === 'alarm')
-		{
-			send_message('ai', ai_responses.status[2]);
-			return;
+			if (parsed_user_message.location.toLowerCase() === units_list[i].city.toLowerCase())
+			{
+				if (match['item']['word'] === 'status' && parsed_user_message.type === 'status')
+				{
+					send_message('ai', `Status jednostki ${units_list[i].name}: ${get_random_unit_status()}`);
+					return;
+				}
+				else if (match['item']['word'] === 'alarm' && parsed_user_message.type === 'alarm')
+				{
+					send_message('ai', `Ostatnie alarmy dla jednostki ${units_list[i].name}: day/month/year hour:minute`);
+					return;
+				}
+			}
 		}
 	}
 
