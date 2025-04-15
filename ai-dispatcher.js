@@ -51,7 +51,7 @@ const keywords = {
 	// STATUS KEYWORDS
 	status: [
 		'status',
-		'alarm',
+		'alarm'
 	],
 	// FUN KEYWORDS
 	fun: [
@@ -60,6 +60,13 @@ const keywords = {
 	// HELP KEYWORDS
 	help: [
 		'pomoc'
+	],
+	// ABILITIES KEYWORDS
+	abilities: [
+		'robić', // co potrafisz robić
+		'zrobić', // co potrafisz zrobić
+		'potrafisz', // co potrafisz robić/zrobić
+		'umiesz' // co umiesz robić/zrobić
 	]
 };
 
@@ -88,6 +95,10 @@ const ai_responses = {
 	// HELP RESPONSES
 	help: [
 		'Żeby zobaczyć status danej jednostki, wpisz <b>status MIEJSCOWOŚĆ</b> (zastąp MIEJSCOWOŚĆ faktyczną nazwą, np. Poznań).<br>Żeby zobaczyć ostatnie 5 alarmów danej jednostki, komenda wygląda analogicznie do statusu, tylko zastąp słowo kluczowe <b>status</b> słowem <b>alarm</b>'
+	],
+	// ABILITIES RESPONSES
+	abilities: [
+		'Potrafię pokazać status wybranej jednostki, ostatni alarm wybranej jednostki, i to by było na tyle.'
 	],
 	// UNRECOGNIZABLE_USER_MESSAGE MESSAGES
 	unrecognizable_message: [
@@ -182,7 +193,7 @@ function send_message(type, message)
 	message_div.setAttribute('class', `chat-message-${type}`);
 	if (type === 'ai')
 	{
-		message_div.innerHTML = `<img src="images/eremiza-logo-small.png" alt="icon"><div><strong>${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}</div>`;
+		message_div.innerHTML = `<strong><img src="images/eremiza-logo-small.png" alt="icon">&nbsp;${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}`;
 	}
 	else
 	{
@@ -242,7 +253,8 @@ const fuse_keywords = {
 	farewell: keywords.farewell.map(word => ({ word })),
 	status: keywords.status.map(word => ({ word })),
 	fun: keywords.fun.map(word => ({ word })),
-	help: keywords.help.map(word => ({ word }))
+	help: keywords.help.map(word => ({ word })),
+	abilities: keywords.abilities.map(word => ({ word }))
 };
 
 function get_ai_response()
@@ -265,18 +277,39 @@ function get_ai_response()
 	if (match && match.score < fuse_match_threshold)
 	{
 		const parsed_user_message = parse_user_message(stored_user_message);
+		let all_units_in_city = [];
+		let all_units_statuses = '';
+		let all_units_alarms = '';
+
+		for (var i = 0; i < units_list.length; i++)
+		{
+			if (parsed_user_message.location.trim().toLowerCase() === units_list[i].city.toLowerCase()) all_units_in_city.push(units_list[i].name);
+		}
+
 		for (var i = 0; i < units_list.length; i++)
 		{
 			if (parsed_user_message.location.toLowerCase() === units_list[i].city.toLowerCase())
 			{
 				if (match['item']['word'] === 'status' && parsed_user_message.type === 'status')
 				{
-					send_message('ai', `Status jednostki ${units_list[i].name}: ${get_random_unit_status()}`);
+					console.log(all_units_in_city);
+					console.log(all_units_in_city.length);
+					for (var j = 0; j < all_units_in_city.length; j++)
+					{
+						all_units_statuses += `Status jednostki ${all_units_in_city[j]}: ${get_random_unit_status()}<br>`;
+					}
+					send_message('ai', all_units_statuses);
+					all_units_statuses = '';
 					return;
 				}
 				else if (match['item']['word'] === 'alarm' && parsed_user_message.type === 'alarm')
 				{
-					send_message('ai', `Ostatnie alarmy dla jednostki ${units_list[i].name}: day/month/year hour:minute`);
+					for (var j = 0; j < all_units_in_city.length; j++)
+					{
+						all_units_alarms += `Ostatni alarm dla jednostki ${all_units_in_city[j]}: day/month/year hour:minute<br>`;
+					}
+					send_message('ai', all_units_alarms);
+					all_units_alarms = '';
 					return;
 				}
 			}
@@ -294,6 +327,13 @@ function get_ai_response()
 	if (match && match.score < fuse_match_threshold)
 	{
 		send_message('ai', ai_responses.help[random_int(0, ai_responses.help.length - 1)]);
+		return;
+	}
+
+	match = fuse_get_best_match(stored_user_message, fuse_keywords.abilities);
+	if (match && match.score < fuse_match_threshold)
+	{
+		send_message('ai', ai_responses.abilities[random_int(0, ai_responses.abilities.length - 1)]);
 		return;
 	}
 
