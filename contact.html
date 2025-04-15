@@ -41,15 +41,24 @@
 	<script src="script.js"></script>
 	<script src="platform.js"></script>
 	<script>
-		const map = L.map('contact-map').setView([52.462846, 16.700466], 17);
+		const map = L.map('contact-map').setView([52.46162, 16.70269], 15);
 
 		const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; OpenStreetMap'
 		}).addTo(map);
 
-		const marker = L.marker([52.462846, 16.700466]).addTo(map);
+		const marker = L.marker([52.46162, 16.70269]).addTo(map);
 		marker.bindPopup("shoutout szymek");
+
+		var polygon = L.polygon([
+			[52.465031, 16.701268],
+			[52.462076, 16.697288],
+			[52.459200, 16.700764],
+			[52.458758, 16.705753],
+			[52.462481, 16.706707],
+		]).addTo(map);
+		polygon.bindPopup("Zjednoczone Emiraty Marianowskie");
 	</script>
 	<script src="common-elements.js"></script>
 </body>
