@@ -16,3 +16,10 @@ function login_manager()
 		document.querySelector('.invalid-login-credentials-alert').style.opacity = 1.0;
 	}
 }
+
+window.onload = function()
+{
+	document.querySelector('main').style.animation = 'load_in';
+	document.querySelector('main').style.animationDuration = '1s';
+	document.querySelector('main').style.animationTimingFunction = 'ease';
+}
