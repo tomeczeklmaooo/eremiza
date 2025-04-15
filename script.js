@@ -27,10 +27,23 @@ function landing_banner_image_change()
 
 function check_browser()
 {
-	if (document.getElementById('browser-alert'))
+	let body_content_initial = document.querySelector('body').innerHTML;
+
+	if (document.querySelectorAll('meta[content="no-browser-alert"]').length > 0)
 	{
-		if (platform.name.toLowerCase() === 'firefox') document.getElementById('browser-alert').style.display = 'none';
-		else document.getElementById('browser-alert').innerHTML = `Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})`;
+		return;
+	}
+	else 
+	{
+		if (platform.name.toLowerCase() !== 'firefox')
+		{
+			document.querySelector('body').innerHTML = `<eremiza-browser-alert></eremiza-browser-alert>${body_content_initial}`;
+			document.getElementById('browser-alert').innerHTML = `Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})`;
+		}
+		else
+		{
+			document.getElementById('browser-alert').style.display = 'none';
+		}
 	}
 }
 
