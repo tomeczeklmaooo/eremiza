@@ -114,7 +114,7 @@ table th
 {
 	padding: 5px 15px;
 	text-align: right;
-	width: 200px;
+	width: 250px;
 	border-right: 1px solid #cccccc;
 }
 table td
@@ -637,6 +637,12 @@ landing-banner span
 {
 	color: #e0e0e0;
 	text-shadow: 2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333, 1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333;
+}
+
+.admin-content .admin-main-container .admin-settings-display .admin-settings-inner-container
+{
+	width: 100%;
+	height: 100%;
 }
 
 @keyframes arrow_opacity
