@@ -49,4 +49,7 @@ window.onload = function()
 {
 	check_browser();
 	landing_banner_image_change();
+	document.querySelector('main').style.animation = 'load_in';
+	document.querySelector('main').style.animationDuration = '1s';
+	document.querySelector('main').style.animationTimingFunction = 'ease';
 }
