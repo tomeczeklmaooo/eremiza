@@ -643,6 +643,76 @@ landing-banner span
 {
 	width: 100%;
 	height: 100%;
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.admin-content .admin-main-container .admin-settings-display .admin-settings-inner-container .admin-settings-inner-container-column
+{
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.admin-input-group
+{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.admin-input-text
+{
+	background-color: #e6e6e6;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	padding: 0 10px;
+	width: 300px;
+	height: 40px;
+	border-bottom: 2px solid #e6e6e6;
+	transition: 0.3s ease;
+}
+
+.admin-input-text:focus
+{
+	border-bottom: 2px solid #4a90e2;
+}
+
+.admin-input-btn
+{
+	color: #ffffff;
+	background-color: #4a90e2;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	height: 40px;
+	padding: 0 25px;
+	font-size: 12pt;
+	user-select: none;
+	transition: 0.3s ease;
+}
+.admin-input-btn:hover
+{
+	background-color: #a1c6ff;
+	cursor: pointer;
+}
+
+#admin-unit-map
+{
+	width: 100%;
+	height: 700px;
+	background: url(https://placehold.co/150x150/EEE/31343C?font=playfair-display&text=Placeholder);
+}
+
+.unit-status-active
+{
+	color: #80ef80;
+}
+.unit-status-inactive
+{
+	color: #ff2c2c;
 }
 
 @keyframes arrow_opacity

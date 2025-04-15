@@ -1,7 +1,7 @@
 /*
-Nazwa remizy
-Adres remizy
-Dane kontaktowe
+Nazwa remizy (z pliku CSV, autowpisywana do pola)
+Adres remizy (z pliku CSV, autowpisywana do pola)
+Dane kontaktowe (losowane)
 Lokalizacja na mapie (losowana z pliku CSV i pokazywana na mapie OpenStreetMap z Leaflet)
 Liczba strażaków (losowane, zakres zależny od rodzaju; OSP: 10-20; PSP: 40-60)
 Liczba wozów (losowane, zakres zależny od rodzaju; OSP: 1-2; PSP: 3-6)
@@ -9,44 +9,64 @@ Harmonogram dyżurów
 Status remizy
 */
 let firedept_mgr = `
+<h3>Zarządzaj remizą</h3>
 <div class="admin-settings-inner-container">
-	<h3>Zarządzaj remizą</h3>
-	<div class="admin-input-group">
-		<span>Nazwa remizy</span>
-		<input type="text" id="admin-input-text-unit-name" class="admin-input-text">
+	<div class="admin-settings-inner-container-column">
+		<div class="admin-input-group">
+			<span>Nazwa remizy</span>
+			<input type="text" id="admin-input-text-unit-name" class="admin-input-text" placeholder="Nazwa remizy">
+		</div>
+		<div class="admin-input-group">
+			<span>Adres remizy</span>
+			<input type="text" id="admin-input-text-unit-address" class="admin-input-text" placeholder="Adres remizy">
+		</div>
+		<div class="admin-input-group">
+			<span>Dane kontaktowe</span>
+			<input type="text" id="admin-input-text-unit-contact-name" class="admin-input-text" placeholder="Imię i nazwisko">
+			<input type="text" id="admin-input-text-unit-contact-phone" class="admin-input-text" placeholder="Nr. telefonu">
+			<input type="text" id="admin-input-text-unit-contact-mail" class="admin-input-text" placeholder="Adres e-mail">
+		</div>
+		<div class="admin-input-group">
+			<span>Liczba strażaków</span>
+			<span>FIREMEN_COUNT</span>
+		</div>
+		<div class="admin-input-group">
+			<span>Liczba wozów</span>
+			<span>FIRECAR_COUNT</span>
+		</div>
+		<div class="admin-input-group">
+			<span>Harmonogram dyżurów</span>
+			<span>TABLE_HERE</span>
+		</div>
+		<div class="admin-input-group">
+			<span>Status remizy</span>
+			<span><span class="unit-status-active"><i class="fa-solid fa-circle-check"></i> Aktywna</span> / <span class="unit-status-inactive"><i class="fa-solid fa-circle-xmark"></i> Nieaktywna</span></span>
+		</div>
 	</div>
-	<div class="admin-input-group">
-		<span>Adres remizy</span>
-		<input type="text" id="admin-input-text-unit-address" class="admin-input-text">
-	</div>
-	<div class="admin-input-group">
-		<span>Dane kontaktowe</span>
-		<input type="text" id="admin-input-text-unit-contact-name" class="admin-input-text" placeholder="Imię i nazwisko">
-		<input type="text" id="admin-input-text-unit-contact-phone" class="admin-input-text" placeholder="Nr. telefonu">
-		<input type="text" id="admin-input-text-unit-contact-mail" class="admin-input-text" placeholder="Adres e-mail">
-	</div>
-	<div class="admin-input-group">
-		<span>Lokalizacja na mapie</span>
-		<div class="placeholder-map" style="background-color: blue;width: 150px;height: 150px;"></div>
-	</div>
-	<div class="admin-input-group">
-		<span>Liczba strażaków</span>
-		<span>FIREMEN_COUNT</span>
-	</div>
-	<div class="admin-input-group">
-		<span>Liczba wozów</span>
-		<span>FIRECAR_COUNT</span>
-	</div>
-	<div class="admin-input-group">
-		<span>Harmonogram dyżurów</span>
-		<span>TABLE_HERE</span>
-	</div>
-	<div class="admin-input-group">
-		<span>Status remizy</span>
-		<span>UNIT_STATUS_ICON UNIT_STATUS_TEXT</span>
+	<div class="admin-settings-inner-container-column">
+		<div class="admin-input-group">
+			<span>Lokalizacja na mapie</span>
+			<div id="admin-unit-map"></div>
+		</div>
 	</div>
 </div>
 `;
+
+let units_list = [];
+
+let random_unit = random_int(0, units_list.length - 1);
+
+let map_script = `
+<script>
+	const map = L.map('admin-unit-map').setView([50.00, 16.00], 15);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; OpenStreetMap'
+	}).addTo(map);
+
+	const marker = L.marker([50.00, 16.00]).addTo(map);
+</script>`;
 
 /*
 Lista strażaków (imię, nazwisko, stopień, specjalizacja)
@@ -54,15 +74,15 @@ Dodaj/usuń strażaka
 Historia udziału w akcjach
 */
 let firemen_mgr = `
+<h3>Zarządzaj strażakami</h3>
 <div class="admin-settings-inner-container">
-	<h3>Zarządzaj strażakami</h3>
 	<div class="admin-input-group">
 		<span>Lista strażaków</span>
 		<span>TABLE_HERE</span>
 	</div>
 	<div class="admin-input-group">
-		<button class="admin-input-btn">Dodaj strażaka</button>
-		<button class="admin-input-btn">Usuń strażaka</button>
+		<button class="admin-input-btn"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
+		<button class="admin-input-btn"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
 	</div>
 	<div class="admin-input-group">
 		<span>Historia udziału w akcjach</span>
@@ -76,15 +96,15 @@ Lista wozów (model, typ, numer operacyjny, stan (sprawny / w naprawie / wycofan
 Dodaj/usuń pojazd
 */
 let firecar_mgr = `
+<h3>Zarządzaj wozami</h3>
 <div class="admin-settings-inner-container">
-	<h3>Zarządzaj wozami</h3>
 	<div class="admin-input-group">
 		<span>Lista wozów</span>
 		<span>TABLE_HERE</span>
 	</div>
 	<div class="admin-input-group">
-		<button class="admin-input-btn">Dodaj wóz</button>
-		<button class="admin-input-btn">Usuń wóz</button>
+		<button class="admin-input-btn"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
+		<button class="admin-input-btn"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
 	</div>
 </div>
 `;
@@ -94,8 +114,8 @@ Lista zgłoszeń (data + godzina, lokalizacja, typ, jednostki, status akcji)
 Filtrowanie akcji
 */
 let last_alarms = `
+<h3>Ostatnie alarmy</h3>
 <div class="admin-settings-inner-container">
-	<h3>Ostatnie alarmy</h3>
 	<div class="admin-input-group">
 		<span>Lista zgłoszeń</span>
 		<span>TABLE_HERE</span>
@@ -109,11 +129,13 @@ let last_alarms = `
 
 function change_display_content(idx)
 {
-	var settings_display = document.querySelector('.admin-settings-display');
+	const settings_display = document.querySelector('.admin-settings-display');
+	const admin_body = document.querySelector('body');
 	switch(idx)
 	{
 		case 0:
 			settings_display.innerHTML = firedept_mgr;
+			admin_body.innerHTML += map_script;
 			break;
 		case 1:
 			settings_display.innerHTML = firemen_mgr;
