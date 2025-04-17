@@ -292,8 +292,6 @@ function get_ai_response()
 			{
 				if (match['item']['word'] === 'status' && parsed_user_message.type === 'status')
 				{
-					console.log(all_units_in_city);
-					console.log(all_units_in_city.length);
 					for (var j = 0; j < all_units_in_city.length; j++)
 					{
 						all_units_statuses += `Status jednostki ${all_units_in_city[j]}: ${get_random_unit_status()}<br>`;

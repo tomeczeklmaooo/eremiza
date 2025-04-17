@@ -76,17 +76,21 @@ Historia udziału w akcjach
 let firemen_mgr = `
 <h3>Zarządzaj strażakami</h3>
 <div class="admin-settings-inner-container">
-	<div class="admin-input-group">
-		<span>Lista strażaków</span>
-		<span>TABLE_HERE</span>
+	<div class="admin-settings-inner-container-column">
+		<div class="admin-input-group">
+			<span>Lista strażaków</span>
+			<span>TABLE_HERE</span>
+		</div>
+		<div class="admin-input-group">
+			<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
+			<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
+		</div>
 	</div>
-	<div class="admin-input-group">
-		<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
-		<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
-	</div>
-	<div class="admin-input-group">
-		<span>Historia udziału w akcjach</span>
-		<span>TABLE_HERE:FILTER_BY_NAME</span>
+	<div class="admin-settings-inner-container-column">
+		<div class="admin-input-group">
+			<span>Historia udziału w akcjach</span>
+			<span>TABLE_HERE:FILTER_BY_NAME</span>
+		</div>
 	</div>
 </div>
 `;
@@ -98,13 +102,18 @@ Dodaj/usuń pojazd
 let firecar_mgr = `
 <h3>Zarządzaj wozami</h3>
 <div class="admin-settings-inner-container">
-	<div class="admin-input-group">
-		<span>Lista wozów</span>
-		<span>TABLE_HERE</span>
+	<div class="admin-settings-inner-container-column">
+		<div class="admin-input-group">
+			<span>Lista wozów</span>
+			<span>TABLE_HERE</span>
+		</div>
+		<div class="admin-input-group">
+			<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
+			<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
+		</div>
 	</div>
-	<div class="admin-input-group">
-		<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
-		<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
+	<div class="admin-settings-inner-container-column">
+		<!-- EMPTY COLUMN -->
 	</div>
 </div>
 `;
@@ -116,13 +125,17 @@ Filtrowanie akcji
 let last_alarms = `
 <h3>Ostatnie alarmy</h3>
 <div class="admin-settings-inner-container">
-	<div class="admin-input-group">
-		<span>Lista zgłoszeń</span>
-		<span>TABLE_HERE</span>
+	<div class="admin-settings-inner-container-column">
+		<div class="admin-input-group">
+			<span>Lista zgłoszeń</span>
+			<span>TABLE_HERE</span>
+		</div>
 	</div>
-	<div class="admin-input-group">
-		<span>Adres remizy</span>
-		<span>FILTER_LIST:DATETIME/LOCATION/TYPE/UNITS/STATUS</span>
+	<div class="admin-settings-inner-container-column">
+		<div class="admin-input-group">
+			<span>Filtry</span>
+			<span>FILTER_LIST:DATETIME/LOCATION/TYPE/UNITS/STATUS</span>
+		</div>
 	</div>
 </div>
 `;
