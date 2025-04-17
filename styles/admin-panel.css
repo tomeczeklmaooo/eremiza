@@ -1,0 +1,140 @@
+.admin-content header
+{
+	width: 100%;
+	height: 3vh;
+	padding: 15px 0;
+}
+
+.admin-content header img
+{
+	width: 45px;
+	margin: 0 15px;
+}
+
+.admin-content header h3
+{
+	flex: 1;
+	user-select: none;
+}
+
+.admin-content header .admin-header-notify-text
+{
+	margin: 0 15px;
+	opacity: 0.5;
+	user-select: none;
+}
+
+.admin-main-container
+{
+	width: 100vw;
+	height: 97vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: #f1f1f1;
+}
+
+.admin-main-container .admin-navigation
+{
+	background-color: #f1f1f1;
+	width: 15vw;
+	height: 100%;
+}
+
+.admin-navigation .admin-navigation-item
+{
+	background-color: #e9e9e9;
+	color: #333333;
+	border-radius: 4px;
+	margin: 5px;
+	height: 45px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	padding: 0 15px;
+	user-select: none;
+	transition: 0.3s ease;
+}
+
+.admin-navigation .admin-navigation-item:hover
+{
+	background-color: #d6d6d6;
+	cursor: pointer;
+}
+
+.admin-main-container .admin-settings-display
+{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #e0e0e0;
+	border-radius: 8px 0 0 0;
+}
+
+.admin-settings-display .admin-settings-display-information
+{
+	opacity: 0.5;
+	user-select: none;
+}
+
+.admin-settings-display .admin-settings-display-anim-arrows
+{
+	opacity: 0;
+	user-select: none;
+	animation: arrow_opacity 3s ease infinite;
+}
+
+.admin-settings-display .admin-settings-display-anim-arrows span
+{
+	color: #e0e0e0;
+	text-shadow: 2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333, 1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333;
+}
+
+.admin-settings-display .admin-settings-inner-container
+{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.admin-settings-inner-container .admin-settings-inner-container-column
+{
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.admin-input-group
+{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.admin-input-text
+{
+	width: 300px;
+	height: 40px;
+}
+
+#admin-unit-map
+{
+	width: 100%;
+	height: 700px;
+	background: url(https://placehold.co/150x150/EEE/31343C?font=playfair-display&text=Placeholder);
+}
+
+.unit-status-active
+{
+	color: #80ef80;
+}
+.unit-status-inactive
+{
+	color: #ff2c2c;
+}

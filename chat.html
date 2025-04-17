@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>eRemiza</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/chat.css">
 	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
 </head>
@@ -24,11 +25,11 @@
 				</span>
 			</div>
 			<div class="chat-input-bar">
-				<input type="text" id="chat-input-text" class="chat-input-text" placeholder="Wiadomość">
-				<button class="chat-input-btn chat-input-attachment-btn">
+				<input type="text" id="chat-input-text" class="input-text chat-input-text" placeholder="Wiadomość">
+				<button class="input-btn chat-input-attachment-btn">
 					<i class="fa-solid fa-paperclip"></i>
 				</button>
-				<button class="chat-input-btn chat-input-send-btn" onclick="send_user_message()">
+				<button class="input-btn chat-input-send-btn" onclick="send_user_message()">
 					<i class="fa-solid fa-paper-plane"></i>
 				</button>
 			</div>
@@ -37,11 +38,11 @@
 
 	<eremiza-footer></eremiza-footer>
 
-	<script src="script.js"></script>
-	<script src="platform.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="scripts/platform.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
-	<script src="ai-dispatcher.js"></script>
-	<script src="common-elements.js"></script>
+	<script src="scripts/ai-dispatcher.js"></script>
+	<script src="scripts/common-elements.js"></script>
 </body>
 </html>

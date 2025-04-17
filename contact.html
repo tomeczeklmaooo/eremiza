@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>eRemiza</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/contact.css">
 	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
 </head>
@@ -36,8 +37,8 @@
 	<eremiza-footer></eremiza-footer>
 
 	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-	<script src="script.js"></script>
-	<script src="platform.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="scripts/platform.js"></script>
 	<script>
 		const map = L.map('contact-map').setView([52.46162, 16.70269], 15);
 
@@ -58,6 +59,6 @@
 		]).addTo(map);
 		polygon.bindPopup("Zjednoczone Emiraty Marianowskie");
 	</script>
-	<script src="common-elements.js"></script>
+	<script src="scripts/common-elements.js"></script>
 </body>
 </html>

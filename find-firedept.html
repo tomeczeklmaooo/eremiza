@@ -7,7 +7,8 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/find-firedept.css">
 	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
 </head>
@@ -22,8 +23,8 @@
 					<div class="fmap-inputs">
 						<h2>Znajdź remizę</h2>
 						<div class="find-input-bar">
-							<input type="text" id="find-input-text" class="find-input-text" placeholder="Wpisz adres">
-							<button class="find-input-btn" onclick="search_fire_depts()">
+							<input type="text" id="find-input-text" class="input-text find-input-text" placeholder="Wpisz adres">
+							<button class="input-btn" onclick="search_fire_depts()">
 								<i class="fa-solid fa-magnifying-glass-location"></i>&emsp;Szukaj
 							</button>
 						</div>
@@ -47,9 +48,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 	<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 	<script src="https://nominatim.openstreetmap.org/ui/map.html"></script>
-	<script src="script.js"></script>
-	<script src="platform.js"></script>
-	<script src="map-render.js"></script>
-	<script src="common-elements.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="scripts/platform.js"></script>
+	<script src="scripts/map-render.js"></script>
+	<script src="scripts/common-elements.js"></script>
 </body>
 </html>

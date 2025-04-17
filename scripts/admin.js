@@ -14,17 +14,17 @@ let firedept_mgr = `
 	<div class="admin-settings-inner-container-column">
 		<div class="admin-input-group">
 			<span>Nazwa remizy</span>
-			<input type="text" id="admin-input-text-unit-name" class="admin-input-text" placeholder="Nazwa remizy">
+			<input type="text" id="admin-input-text-unit-name" class="input-text admin-input-text" placeholder="Nazwa remizy">
 		</div>
 		<div class="admin-input-group">
 			<span>Adres remizy</span>
-			<input type="text" id="admin-input-text-unit-address" class="admin-input-text" placeholder="Adres remizy">
+			<input type="text" id="admin-input-text-unit-address" class="input-text admin-input-text" placeholder="Adres remizy">
 		</div>
 		<div class="admin-input-group">
 			<span>Dane kontaktowe</span>
-			<input type="text" id="admin-input-text-unit-contact-name" class="admin-input-text" placeholder="Imię i nazwisko">
-			<input type="text" id="admin-input-text-unit-contact-phone" class="admin-input-text" placeholder="Nr. telefonu">
-			<input type="text" id="admin-input-text-unit-contact-mail" class="admin-input-text" placeholder="Adres e-mail">
+			<input type="text" id="admin-input-text-unit-contact-name" class="input-text admin-input-text" placeholder="Imię i nazwisko">
+			<input type="text" id="admin-input-text-unit-contact-phone" class="input-text admin-input-text" placeholder="Nr. telefonu">
+			<input type="text" id="admin-input-text-unit-contact-mail" class="input-text admin-input-text" placeholder="Adres e-mail">
 		</div>
 		<div class="admin-input-group">
 			<span>Liczba strażaków</span>
@@ -81,8 +81,8 @@ let firemen_mgr = `
 		<span>TABLE_HERE</span>
 	</div>
 	<div class="admin-input-group">
-		<button class="admin-input-btn"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
-		<button class="admin-input-btn"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
+		<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
+		<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
 	</div>
 	<div class="admin-input-group">
 		<span>Historia udziału w akcjach</span>
@@ -103,8 +103,8 @@ let firecar_mgr = `
 		<span>TABLE_HERE</span>
 	</div>
 	<div class="admin-input-group">
-		<button class="admin-input-btn"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
-		<button class="admin-input-btn"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
+		<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
+		<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
 	</div>
 </div>
 `;

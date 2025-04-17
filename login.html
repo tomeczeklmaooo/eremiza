@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta property="tag" content="no-browser-alert">
 	<title>eRemiza</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/login.css">
 	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
 </head>
@@ -16,14 +17,14 @@
 			<div class="login-window">
 				<div class="login-input-group">
 					<span>Nazwa użytkownika</span>
-					<input type="text" id="login-input-text-username" class="login-input-text">
+					<input type="text" id="login-input-text-username" class="input-text login-input-text">
 				</div>
 				<div class="login-input-group">
 					<span>Hasło</span>
-					<input type="password" id="login-input-text-password" class="login-input-text">
+					<input type="password" id="login-input-text-password" class="input-text login-input-text">
 				</div>
 				<div class="login-input-group">
-					<button class="find-input-btn" onclick="login_manager()">
+					<button class="input-btn" onclick="login_manager()">
 						Zaloguj się
 					</button>
 				</div>
@@ -35,9 +36,9 @@
 
 	</main>
 
-	<script src="script.js"></script>
-	<script src="platform.js"></script>
-	<script src="login-service.js"></script>
-	<script src="common-elements.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="scripts/platform.js"></script>
+	<script src="scripts/login-service.js"></script>
+	<script src="scripts/common-elements.js"></script>
 </body>
 </html>

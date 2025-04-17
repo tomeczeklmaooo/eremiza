@@ -1,0 +1,91 @@
+.chat-window
+{
+	height: 80%;
+	width: 50%;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	overflow: auto;
+	border: 1px solid #cccccc;
+	border-radius: 12px;
+}
+
+.chat-window-dummy-spacer
+{
+	margin-top: auto;
+}
+
+.chat-initial-information
+{
+	opacity: 0.5;
+	width: 100%;
+	text-align: center;
+	user-select: none;
+}
+
+.chat-message-user
+{
+	align-self: flex-end;
+	background-color: #4a90e2;
+	border-radius: 8px;
+	max-width: 70%;
+	color: #ffffff;
+	padding: 5px 15px;
+}
+
+.chat-message-ai
+{
+	align-self: flex-start;
+	background-color: #f1f1f1;
+	border-radius: 8px;
+	max-width: 70%;
+	padding: 5px 15px;
+}
+
+.chat-message-ai img
+{
+	width: 16px;
+	height: 16px;
+}
+
+.timestamp
+{
+	font-size: 8pt;
+}
+
+.chat-input-bar
+{
+	width: 50%;
+	height: 5%;
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.chat-input-text
+{
+	height: 100%;
+	flex: 1;
+}
+
+.chat-input-send-btn
+{
+	background-color: #4a90e2;
+	transition: 0.3s ease;
+}
+.chat-input-send-btn:hover
+{
+	background-color: #a1c6ff;
+	cursor: pointer;
+}
+.chat-input-attachment-btn
+{
+	background-color: #afafaf;
+	transition: 0.3s ease;
+}
+.chat-input-attachment-btn:hover
+{
+	background-color: #c7c7c7;
+	cursor: pointer;
+}
