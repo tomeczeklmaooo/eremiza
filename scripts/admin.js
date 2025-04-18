@@ -188,3 +188,9 @@ function change_display_content(idx)
 			break;
 	}
 }
+
+window.onload = function()
+{
+	const is_logged_in = sessionStorage.getItem('is_logged_in');
+	if (is_logged_in !== 'true') window.location.href = 'login.html';
+}

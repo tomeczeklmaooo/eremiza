@@ -9,6 +9,7 @@ function login_manager()
 
 	if (username === demo_username && password === demo_password)
 	{
+		sessionStorage.setItem('is_logged_in', 'true');
 		window.location.href = 'admin-panel.html';
 	}
 	else
