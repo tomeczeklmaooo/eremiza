@@ -111,7 +111,7 @@ const ai_responses = {
 load_all_units([
 	{ url: '../data/osp.csv', label: 'OSP' },
 	{ url: '../data/psp.csv', label: 'PSP' }
-], function(){ ; });
+], function() { ; });
 
 function parse_user_message(input)
 {
