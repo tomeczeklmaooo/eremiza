@@ -1,0 +1,12 @@
+.report-input-group
+{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.report-input-text, .report-input-select
+{
+	width: 300px;
+	height: 40px;
+}

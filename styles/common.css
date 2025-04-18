@@ -190,6 +190,18 @@ landing-banner span
 	gap: 5px;
 }
 
+/* NEW REPORT */
+.report-content
+{
+	display: flex;
+	width: 100%;
+	height: 90vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
 /* LOGIN / REGISTER */
 .login-content
 {
@@ -309,6 +321,35 @@ footer:nth-of-type(2)
 {
 	background-color: #a1c6ff;
 	cursor: pointer;
+}
+
+.input-select
+{
+	background-color: #e6e6e6;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	padding: 0 10px;
+	border-bottom: 2px solid #e6e6e6;
+	transition: 0.3s ease;
+}
+
+.input-textarea
+{
+	background-color: #e6e6e6;
+	font-family: inherit;
+	outline: none;
+	border: none;
+	border-radius: 12px;
+	padding: 10px 8px;
+	resize: none;
+	border-bottom: 2px solid #e6e6e6;
+	transition: 0.3s ease;
+}
+
+.input-textarea:focus
+{
+	border-bottom: 2px solid #4a90e2;
 }
 
 /* KEYFRAMES */

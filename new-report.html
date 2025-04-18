@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>eRemiza</title>
 	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/new-report.css">
 	<link rel="shortcut icon" href="images/eremiza-logo-small.png" type="image/x-icon">
 	<script src="https://kit.fontawesome.com/4140c3b052.js" crossorigin="anonymous"></script>
 </head>
@@ -12,7 +13,35 @@
 	<eremiza-header></eremiza-header>
 
 	<main>
-		Nowe zgłoszenie
+		<div class="report-content">
+			<h2>Nowe zgłoszenie</h2>
+			<div class="report-input-group">
+				<span>Lokalizacja</span>
+				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Ulica i numer domu / mieszkania">
+				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Kod pocztowy">
+				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Miejscowość">
+				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Telefon">
+			</div>
+			<div class="report-input-group">
+				<span>Rodzaj</span>
+				<select id="report-input-select-type" class="input-select report-input-select">
+					<option value="none" selected>---</option>
+					<option value="car-accident">Wypadek (samochodowy)</option>
+					<option value="accident">Wypadek (ogólny)</option>
+					<option value="fire">Pożar</option>
+					<option value="fallen-tree">Powalone drzewo</option>
+					<option value="flooding">Zalanie</option>
+					<option value="other">Inne</option>
+				</select>
+			</div>
+			<div class="report-input-group">
+				<span>Opis</span>
+				<textarea id="report-input-textarea-description" class="input-textarea" placeholder="Dodatkowy opis..." rows="5" cols="28"></textarea>
+			</div>
+			<div class="report-input-group">
+				<button class="input-btn"><i class="fa-solid fa-paper-plane"></i> Wyślij zgłoszenie</button>
+			</div>
+		</div>
 	</main>
 
 	<eremiza-footer></eremiza-footer>
