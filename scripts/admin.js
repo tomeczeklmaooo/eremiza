@@ -52,7 +52,10 @@ let firedept_mgr = `
 </div>
 `;
 
-let units_list = [];
+load_all_units([
+	{ url: '../data/osp.csv', label: 'OSP' },
+	{ url: '../data/psp.csv', label: 'PSP' }
+], function(){ ; });
 
 let random_unit = random_int(0, units_list.length - 1);
 

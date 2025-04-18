@@ -40,10 +40,6 @@ function check_browser()
 			document.querySelector('body').innerHTML = `<eremiza-browser-alert></eremiza-browser-alert>${body_content_initial}`;
 			document.getElementById('browser-alert').innerHTML = `Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})`;
 		}
-		else
-		{
-			document.getElementById('browser-alert').style.display = 'none';
-		}
 	}
 }
 

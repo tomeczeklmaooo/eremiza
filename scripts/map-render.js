@@ -7,47 +7,31 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const markers = L.markerClusterGroup();
 map.addLayer(markers);
 
-function load_units(url, color, label)
+function add_units_to_map()
 {
-	Papa.parse(url, {
-		download: true,
-		header: true,
-		complete: function(results)
-		{
-			results.data.forEach(unit => {
-				const lat_str = unit['y'];
-				const lon_str = unit['x'];
-				if (lat_str && lon_str)
-				{
-					const lat = parseFloat(lat_str);
-					// const lat = parseFloat(lat_str.replace(',', '.'));
-					const lon = parseFloat(lon_str);
-					// const lon = parseFloat(lon_str.replace(',', '.'));
+	for (let i = 0; i < units_list.length; i++)
+	{
+		const color = (units_list[i].type == 'OSP') ? 'red' : 'blue';
+		const icon = L.icon({
+			iconUrl: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+				<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+					<circle cx="18" cy="18" r="15" fill="${color}" stroke="white" stroke-width="1"/>
+				</svg>
+			`)}`,
+			iconSize: [12, 12],
+			iconAnchor: [6, 6]
+		});
+		const marker = L.marker([units_list[i].coordinates.lat, units_list[i].coordinates.lon], { icon });
 
-					if (!isNaN(lat) && !isNaN(lon))
-					{
-						const icon = L.icon({
-							iconUrl: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
-								<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-									<circle cx="18" cy="18" r="15" fill="${color}" stroke="white" stroke-width="1"/>
-								</svg>
-							`)}`,
-							iconSize: [12, 12],
-							iconAnchor: [6, 6]
-						});
-						const marker = L.marker([lat, lon], { icon });
-	
-						marker.bindPopup(`<strong>${unit['Nazwa']}</strong><br/>Typ: ${label}<br/>Miejscowość: ${unit['Miejscowość']}`);
-						markers.addLayer(marker);
-					}
-				}
-			});
-		}
-	});
+		marker.bindPopup(`<strong>${units_list[i].name}</strong><br/>Typ: ${units_list[i].type}<br/>Miejscowość: ${units_list[i].city}`);
+		markers.addLayer(marker);
+	}
 }
 
-load_units('data/osp.csv', 'red', 'OSP');
-load_units('data/psp.csv', 'blue', 'PSP');
+load_all_units([
+	{ url: '../data/osp.csv', label: 'OSP' },
+	{ url: '../data/psp.csv', label: 'PSP' }
+], function(){ add_units_to_map(); });
 
 function calculate_distance(lat1, lon1, lat2, lon2)
 {
@@ -85,7 +69,7 @@ function search_fire_depts()
 				const closest_markers = distances.slice(0, 5);
 
 				closest_markers.forEach((item, index) => {
-					item.marker.openPopup();
+					// item.marker.openPopup();
 					document.getElementById('found-depts').innerHTML += `${item.marker._popup.getContent()} - Odległość: ${item.distance.toFixed(2)} km<br>`;
 				});
 			}

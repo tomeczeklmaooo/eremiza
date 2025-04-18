@@ -108,43 +108,10 @@ const ai_responses = {
 	]
 };
 
-let units_list = [];
-
-function load_units(url, label)
-{
-	Papa.parse(url, {
-		download: true,
-		header: true,
-		complete: function(results)
-		{
-			results.data.forEach(unit => {
-				const lat_str = unit['y'];
-				const lon_str = unit['x'];
-				if (lat_str && lon_str)
-				{
-					const lat = parseFloat(lat_str);
-					const lon = parseFloat(lon_str);
-
-					if (!isNaN(lat) && !isNaN(lon))
-					{
-						units_list.push({
-							type: label,
-							name: unit['Nazwa'],
-							city: unit['Miejscowość'],
-							region: unit['Województwo'] || '',
-							county: unit['Powiat'] || '',
-							address: unit['Adres'] || '',
-							coordinates: { lat: lat, lon: lon }
-						});
-					}
-				}
-			});
-		}
-	});
-}
-
-load_units('data/osp.csv', 'OSP');
-load_units('data/psp.csv', 'PSP');
+load_all_units([
+	{ url: '../data/osp.csv', label: 'OSP' },
+	{ url: '../data/psp.csv', label: 'PSP' }
+], function(){ ; });
 
 function parse_user_message(input)
 {
