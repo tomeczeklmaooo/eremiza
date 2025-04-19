@@ -29,8 +29,8 @@ function add_units_to_map()
 }
 
 load_all_units([
-	{ url: '../data/osp.csv', label: 'OSP' },
-	{ url: '../data/psp.csv', label: 'PSP' }
+	{ url: 'data/osp.csv', label: 'OSP' },
+	{ url: 'data/psp.csv', label: 'PSP' }
 ], function() { add_units_to_map(); });
 
 function calculate_distance(lat1, lon1, lat2, lon2)

@@ -10,8 +10,8 @@ function get_random_unit()
 }
 
 load_all_units([
-	{ url: '../data/osp.csv', label: 'OSP' },
-	{ url: '../data/psp.csv', label: 'PSP' }
+	{ url: 'data/osp.csv', label: 'OSP' },
+	{ url: 'data/psp.csv', label: 'PSP' }
 ], function()
 {
 	random_unit = get_random_unit();
