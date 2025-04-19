@@ -82,9 +82,9 @@ function assign_content()
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Dane kontaktowe</span>
-				<input type="text" id="admin-input-text-unit-contact-name" class="input-text admin-input-text" placeholder="Imię i nazwisko">
-				<input type="text" id="admin-input-text-unit-contact-phone" class="input-text admin-input-text" placeholder="Nr. telefonu">
-				<input type="text" id="admin-input-text-unit-contact-mail" class="input-text admin-input-text" placeholder="Adres e-mail">
+				<input type="text" id="admin-input-text-unit-contact-name" class="input-text admin-input-text" placeholder="Imię i nazwisko"  value="${chance.name()}" readonly>
+				<input type="text" id="admin-input-text-unit-contact-phone" class="input-text admin-input-text" placeholder="Nr. telefonu" value="${chance.phone()}" readonly>
+				<input type="text" id="admin-input-text-unit-contact-mail" class="input-text admin-input-text" placeholder="Adres e-mail" value="${chance.email()}" readonly>
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Liczba strażaków</span>
