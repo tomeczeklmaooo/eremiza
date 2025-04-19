@@ -133,7 +133,7 @@
 {
 	width: 100%;
 	height: 700px;
-	background: url(https://placehold.co/150x150/EEE/31343C?font=playfair-display&text=Placeholder);
+	border-radius: 12px 0 0 12px;
 }
 
 .unit-status-active

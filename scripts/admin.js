@@ -18,6 +18,23 @@ load_all_units([
 	assign_content();
 });
 
+function initialize_map(lat, lon, zoom)
+{
+	const map_container = document.querySelector('#admin-unit-map');
+
+	if (map_container)
+	{
+		const map = L.map('admin-unit-map').setView([lat, lon], zoom);
+	
+		const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; OpenStreetMap'
+		}).addTo(map);
+
+		const marker = L.marker([lat, lon]).addTo(map);
+	}
+}
+
 /*
 Nazwa remizy (z pliku CSV, autowpisywana do pola)
 Adres remizy (z pliku CSV, autowpisywana do pola)
@@ -29,8 +46,6 @@ Harmonogram dyżurów
 Status remizy
 */
 let firedept_mgr;
-
-let map_script;
 
 /*
 Lista strażaków (imię, nazwisko, stopień, specjalizacja)
@@ -96,18 +111,6 @@ function assign_content()
 		</div>
 	</div>
 	`;
-
-	map_script = `
-	<script>
-		const map = L.map('admin-unit-map').setView([${random_unit.coordinates.lat}, ${random_unit.coordinates.lon}], 15);
-	
-		const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 19,
-			attribution: '&copy; OpenStreetMap'
-		}).addTo(map);
-	
-		const marker = L.marker(${random_unit.coordinates.lat}, ${random_unit.coordinates.lon}).addTo(map);
-	</script>`;
 
 	firemen_mgr = `
 	<h3>Zarządzaj strażakami</h3>
@@ -176,6 +179,9 @@ function change_display_content(idx)
 	{
 		case 0:
 			settings_display.innerHTML = firedept_mgr;
+			setTimeout(() => {
+				if (random_unit && random_unit.coordinates.lat && random_unit.coordinates.lon) initialize_map(random_unit.coordinates.lat, random_unit.coordinates.lon, 15);
+			}, 0);
 			break;
 		case 1:
 			settings_display.innerHTML = firemen_mgr;
