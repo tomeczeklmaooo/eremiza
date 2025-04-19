@@ -138,7 +138,7 @@ landing-banner
 	flex-direction: column;
 	height: 90vh;
 	gap: 20px;
-	background: url('../images/1.jpg') #000000b2;
+	background: url('images/1.jpg') #000000b2;
 	background-size: 100%;
 	background-position: center;
 	background-blend-mode: multiply;
