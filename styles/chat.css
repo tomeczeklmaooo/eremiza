@@ -24,6 +24,13 @@
 	user-select: none;
 }
 
+.chat-initial-information img
+{
+	filter: grayscale(100%);
+	opacity: 0.5;
+	width: 100px;
+}
+
 .chat-message-user
 {
 	align-self: flex-end;

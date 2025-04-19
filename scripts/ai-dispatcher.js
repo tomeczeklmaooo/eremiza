@@ -144,23 +144,44 @@ function get_random_unit_status()
 	return unit_status[random_int(0, unit_status.length - 1)];
 }
 
+function random_date_in_range(start, end) {
+	return new Date(Math.floor(Math.random() * (end - start + 1) + start));
+}
+
+function get_random_unit_alarm_time()
+{
+	const date = new Date();
+	const time = date.getTime();
+	const time_past = date.getTime() - 30 * 24 * 60 * 60 * 1000;
+	const random_date = random_date_in_range(time_past, time);
+
+	let year = lt10(random_date.getFullYear());
+	let month = lt10(random_date.getMonth() + 1);
+	let day = lt10(random_date.getDate());
+	let hour = lt10(random_date.getHours());
+	let minute = lt10(random_date.getMinutes());
+	let second = lt10(random_date.getSeconds());
+
+	return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+}
+
 function send_message(type, message)
 {
-	var chat_window = document.getElementById('chat-window');
-	var message_div = document.createElement('div');
-	var sender = (type === 'user') ? 'demo' : 'Dyspozytor AI';
-	var date = new Date();
-	var year = lt10(date.getFullYear());
-	var month = lt10(date.getMonth() + 1);
-	var day = lt10(date.getDate());
-	var hour = lt10(date.getHours());
-	var minute = lt10(date.getMinutes());
-	var second = lt10(date.getSeconds());
-	var timestamp = `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+	const chat_window = document.getElementById('chat-window');
+	const message_div = document.createElement('div');
+	const sender = (type === 'user') ? 'demo' : 'Dyspozytor AI';
+	const date = new Date();
+	let year = lt10(date.getFullYear());
+	let month = lt10(date.getMonth() + 1);
+	let day = lt10(date.getDate());
+	let hour = lt10(date.getHours());
+	let minute = lt10(date.getMinutes());
+	let second = lt10(date.getSeconds());
+	let timestamp = `${day}/${month}/${year} ${hour}:${minute}:${second}`;
 	message_div.setAttribute('class', `chat-message-${type}`);
 	if (type === 'ai')
 	{
-		message_div.innerHTML = `<strong><img src="images/eremiza-logo-small.png" alt="icon">&nbsp;${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}`;
+		message_div.innerHTML = `<strong><img src="images/eremiza-logo-small.png" alt="icon" draggable="false">&nbsp;${sender}</strong>&emsp;<span class="timestamp">${timestamp}</span><br>${message}`;
 	}
 	else
 	{
@@ -271,7 +292,7 @@ function get_ai_response()
 				{
 					for (var j = 0; j < all_units_in_city.length; j++)
 					{
-						all_units_alarms += `Ostatni alarm dla jednostki ${all_units_in_city[j]}: day/month/year hour:minute<br>`;
+						all_units_alarms += `Ostatni alarm dla jednostki ${all_units_in_city[j]}: ${get_random_unit_alarm_time()}<br>`;
 					}
 					send_message('ai', all_units_alarms);
 					all_units_alarms = '';
