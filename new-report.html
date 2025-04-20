@@ -17,10 +17,10 @@
 			<h2>Nowe zgłoszenie</h2>
 			<div class="report-input-group">
 				<span>Lokalizacja</span>
-				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Ulica i numer domu / mieszkania">
-				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Kod pocztowy">
-				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Miejscowość">
-				<input type="text" id="report-input-text-location" class="input-text report-input-text" placeholder="Telefon">
+				<input type="text" id="report-input-text-location-address" class="input-text report-input-text" placeholder="Ulica i numer domu / mieszkania">
+				<input type="text" id="report-input-text-location-post" class="input-text report-input-text" placeholder="Kod pocztowy">
+				<input type="text" id="report-input-text-location-city" class="input-text report-input-text" placeholder="Miejscowość">
+				<input type="number" id="report-input-text-location-phone" class="input-text report-input-text" placeholder="Telefon" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 			</div>
 			<div class="report-input-group">
 				<span>Rodzaj</span>
@@ -39,7 +39,14 @@
 				<textarea id="report-input-textarea-description" class="input-textarea" placeholder="Dodatkowy opis..." rows="5" cols="28"></textarea>
 			</div>
 			<div class="report-input-group">
-				<button class="input-btn"><i class="fa-solid fa-paper-plane"></i> Wyślij zgłoszenie</button>
+				<button class="input-btn" onclick="send_report()"><i class="fa-solid fa-paper-plane"></i> Wyślij zgłoszenie</button>
+			</div>
+
+			<div id="modal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<p id="modal-text"></p>
+				</div>
 			</div>
 		</div>
 	</main>
@@ -48,6 +55,7 @@
 
 	<script src="scripts/script.js"></script>
 	<script src="scripts/platform.js"></script>
+	<script src="scripts/new-report.js"></script>
 	<script src="scripts/common-elements.js"></script>
 </body>
 </html>
