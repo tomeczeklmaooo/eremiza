@@ -11,6 +11,11 @@
 	height: 40px;
 }
 
+.report-input-textarea
+{
+	width: 300px;
+}
+
 .modal
 {
 	display: none;

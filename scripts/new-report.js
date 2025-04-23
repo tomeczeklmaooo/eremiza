@@ -1,3 +1,8 @@
+load_all_units([
+	{ url: 'data/osp.csv', label: 'OSP' },
+	{ url: 'data/psp.csv', label: 'PSP' }
+], function() { ; });
+
 function send_report()
 {
 	const inp_location_address = document.querySelector('#report-input-text-location-address').value;
@@ -6,6 +11,7 @@ function send_report()
 	const inp_location_phone = document.querySelector('#report-input-text-location-phone').value;
 	const inp_type = document.querySelector('#report-input-select-type').value;
 	let inp_type_pl = '';
+	let reported_to = '[jednostka]';
 	const inp_description = document.querySelector('#report-input-textarea-description').value;
 
 	const post_regex = /^[0-9]{2}-[0-9]{3}$/.test(inp_location_post);
@@ -50,7 +56,7 @@ function send_report()
 	}
 
 	let message = `
-	<strong>Wysłano zgłoszenie!</strong><br>
+	<strong>Wysłano zgłoszenie do jednostki ${reported_to}</strong><br>
 	Lokalizacja: ${inp_location_address}, ${inp_location_post} ${inp_location_city}<br>
 	Numer kontaktowy: ${inp_location_phone}<br>
 	Rodzaj zgłoszenia: ${inp_type_pl}<br>
