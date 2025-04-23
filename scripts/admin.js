@@ -27,6 +27,30 @@ const firecar_state = [
 	'Wycofany'
 ];
 
+const firemen_rank = [
+	'Strażak',
+	'Starszy strażak',
+	'Dowódca roty',
+	'Pomocnik sekcji',
+	'Dowódca sekcji',
+	'Pomocnik dowódcy plutonu',
+	'Dowódca plutonu',
+	'Członek komisji rewizyjnej',
+	'Przewodniczący komisji rewizyjnej',
+	'Członek zarządu',
+	'Zastępca naczelnika',
+	'Wiceprezes naczelnik',
+	'Prezes',
+];
+
+const firemen_specialization = [
+	'Kierowca',
+	'Mechanik',
+	'Sanitariusz',
+	'Łącznościowiec',
+	'Naczelnik'
+];
+
 function get_random_unit()
 {
 	if (!random_unit && units_list.length > 0)
@@ -298,8 +322,8 @@ function change_display_content(idx)
 				<tr>
 					<td>${i + 1}</td>
 					<td>${chance.name()}</td>
-					<td>[stopień]</td>
-					<td>[specjalizacja]</td>
+					<td>${firemen_rank[random_int(0, firemen_rank.length - 1)]}</td>
+					<td>${firemen_specialization[random_int(0, firemen_specialization.length - 1)]}</td>
 				</tr>`;
 			}
 			break;
