@@ -1,4 +1,11 @@
+const firemen_limit_osp = 20;
+const firemen_limit_psp = 60;
+const firecar_limit_osp = 2;
+const firecar_limit_psp = 6;
+
 let random_unit;
+let firemen_count = 0;
+let firecar_count = 0;
 
 function get_random_unit()
 {
@@ -68,6 +75,9 @@ let last_alarms;
 
 function assign_content()
 {
+	firemen_count = (random_unit.type == 'OSP') ? random_int(10, 20) : random_int(40, 60);
+	firecar_count = (random_unit.type == 'OSP') ? random_int(1, 2) : random_int(3, 6);
+
 	firedept_mgr = `
 	<h3>Zarządzaj remizą</h3>
 	<div class="admin-settings-inner-container">
@@ -88,11 +98,11 @@ function assign_content()
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Liczba strażaków</span>
-				<span>${(random_unit.type == 'OSP') ? random_int(10, 20) : random_int(40, 60)}</span>
+				<span>${firemen_count}</span>
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Liczba wozów</span>
-				<span>${(random_unit.type == 'OSP') ? random_int(1, 2) : random_int(3, 6)}</span>
+				<span>${firecar_count}</span>
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Harmonogram dyżurów</span>
@@ -118,7 +128,16 @@ function assign_content()
 		<div class="admin-settings-inner-container-column">
 			<div class="admin-input-group">
 				<span class="admin-input-header">Lista strażaków</span>
-				<span>TABLE_HERE</span>
+				<table>
+					<tbody id="firemen-list">
+						<tr>
+							<th>ID</th>
+							<th>Imię i nazwisko</th>
+							<th>Stopień</th>
+							<th>Specjalizacja</th>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class="admin-input-group">
 				<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
@@ -140,7 +159,19 @@ function assign_content()
 		<div class="admin-settings-inner-container-column">
 			<div class="admin-input-group">
 				<span class="admin-input-header">Lista wozów</span>
-				<span>TABLE_HERE</span>
+				<table>
+					<tbody id="firecar-list">
+						<tr>
+							<th>ID</th>
+							<th>Model</th>
+							<th>Typ</th>
+							<th>Nr. operacyjny</th>
+							<th>Stan</th>
+							<th>Ostatni przegląd</th>
+							<th>Kierowcy</th>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class="admin-input-group">
 				<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
@@ -185,9 +216,32 @@ function change_display_content(idx)
 			break;
 		case 1:
 			settings_display.innerHTML = firemen_mgr;
+			for (let i = 0; i < firemen_count; i++)
+			{
+				document.getElementById('firemen-list').innerHTML += `
+				<tr>
+					<td>${i + 1}</td>
+					<td>${chance.name()}</td>
+					<td>[stopień]</td>
+					<td>[specjalizacja]</td>
+				</tr>`;
+			}
 			break;
 		case 2:
 			settings_display.innerHTML = firecar_mgr;
+			for (let i = 0; i < firecar_count; i++)
+				{
+					document.getElementById('firecar-list').innerHTML += `
+					<tr>
+						<td>${i + 1}</td>
+						<td>[model]</td>
+						<td>[typ]</td>
+						<td>[nr. operacyjny]</td>
+						<td>[stan]</td>
+						<td>[ost. przegląd]</td>
+						<td>[kierowcy]</td>
+					</tr>`;
+				}
 			break;
 		case 3:
 			settings_display.innerHTML = last_alarms;
