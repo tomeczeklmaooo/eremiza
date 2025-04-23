@@ -3,9 +3,29 @@ const firemen_limit_psp = 60;
 const firecar_limit_osp = 2;
 const firecar_limit_psp = 6;
 
+const alphabet_lower = 'abcdefghijklmnopqrstuwvxyz';
+const alphabet_upper = alphabet_lower.toUpperCase();
+
 let random_unit;
 let firemen_count = 0;
 let firecar_count = 0;
+
+const firecar_types = [
+	'GBA',
+	'GCBA',
+	'Pr',
+	'Sn',
+	'SD',
+	'SRd',
+	'SRt',
+	'Inny'
+];
+
+const firecar_state = [
+	'Sprawny',
+	'W naprawie',
+	'Wycofany'
+];
 
 function get_random_unit()
 {
@@ -128,20 +148,21 @@ function assign_content()
 		<div class="admin-settings-inner-container-column">
 			<div class="admin-input-group">
 				<span class="admin-input-header">Lista strażaków</span>
-				<table>
-					<tbody id="firemen-list">
+				<table id="firemen-table">
+					<thead>
 						<tr>
 							<th>ID</th>
 							<th>Imię i nazwisko</th>
 							<th>Stopień</th>
 							<th>Specjalizacja</th>
 						</tr>
-					</tbody>
+					</thead>
+					<tbody id="firemen-list"></tbody>
 				</table>
 			</div>
 			<div class="admin-input-group">
-				<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
-				<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
+				<button class="input-btn" onclick="add_to_list('person', '${random_unit.type}')"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
+				<button class="input-btn" onclick="remove_from_list('person', '${random_unit.type}')"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
 			</div>
 		</div>
 		<div class="admin-settings-inner-container-column">
@@ -159,8 +180,8 @@ function assign_content()
 		<div class="admin-settings-inner-container-column">
 			<div class="admin-input-group">
 				<span class="admin-input-header">Lista wozów</span>
-				<table>
-					<tbody id="firecar-list">
+				<table id="firecar-table">
+					<thead>
 						<tr>
 							<th>ID</th>
 							<th>Model</th>
@@ -170,16 +191,14 @@ function assign_content()
 							<th>Ostatni przegląd</th>
 							<th>Kierowcy</th>
 						</tr>
-					</tbody>
+					</thead>
+					<tbody id="firecar-list"></tbody>
 				</table>
 			</div>
 			<div class="admin-input-group">
-				<button class="input-btn"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
-				<button class="input-btn"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
+				<button class="input-btn" onclick="add_to_list('car', '${random_unit.type}')"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
+				<button class="input-btn" onclick="remove_from_list('car', '${random_unit.type}')"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
 			</div>
-		</div>
-		<div class="admin-settings-inner-container-column">
-			<!-- EMPTY COLUMN -->
 		</div>
 	</div>
 	`;
@@ -201,6 +220,63 @@ function assign_content()
 		</div>
 	</div>
 	`;
+}
+
+function add_to_list(type, unit_type)
+{
+	let new_firecar = `
+	<tr>
+		<td>[id]</td>
+		<td>[model]</td>
+		<td>[typ]</td>
+		<td>[nr. operacyjny]</td>
+		<td>[stan]</td>
+		<td>[ost. przegląd]</td>
+		<td>[kierowcy]</td>
+	</tr>`;
+
+	let new_fireman = `
+	<tr>
+		<td>[id]</td>
+		<td>[imię i nazwisko]</td>
+		<td>[stopień]</td>
+		<td>[specjalizacja]</td>
+	</tr>`;
+
+	if (type === 'car')
+	{
+		if (unit_type === 'OSP')
+		{
+			if (document.querySelector('#firecar-list').rows.length != firecar_limit_osp)
+			{
+				document.getElementById('firecar-list').innerHTML += new_firecar;
+			}
+		}
+		else if (unit_type === 'PSP')
+		{
+			if (document.querySelector('#firecar-list').rows.length != firecar_limit_psp)
+			{
+				document.getElementById('firecar-list').innerHTML += new_firecar;
+			}
+		}
+	}
+	else if (type === 'person')
+	{
+		if (unit_type === 'OSP')
+		{
+			if (document.querySelector('#firemen-list').rows.length != firemen_limit_osp)
+			{
+				document.getElementById('firemen-list').innerHTML += new_fireman;
+			}
+		}
+		else if (unit_type === 'PSP')
+		{
+			if (document.querySelector('#firemen-list').rows.length != firemen_limit_psp)
+			{
+				document.getElementById('firemen-list').innerHTML += new_fireman;
+			}
+		}
+	}
 }
 
 function change_display_content(idx)
@@ -235,11 +311,11 @@ function change_display_content(idx)
 					<tr>
 						<td>${i + 1}</td>
 						<td>[model]</td>
-						<td>[typ]</td>
-						<td>[nr. operacyjny]</td>
-						<td>[stan]</td>
+						<td>${firecar_types[random_int(0, firecar_types.length - 1)]}</td>
+						<td>${random_int(100, 999)}[${alphabet_upper[random_int(0, alphabet_upper.length - 1)]}]${random_int(10, 99)}</td>
+						<td>${firecar_state[random_int(0, firecar_state.length - 1)]}</td>
 						<td>[ost. przegląd]</td>
-						<td>[kierowcy]</td>
+						<td>${chance.name()},<br>${chance.name()}</td>
 					</tr>`;
 				}
 			break;
