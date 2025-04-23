@@ -10,6 +10,12 @@ function send_report()
 
 	const post_regex = /^[0-9]{2}-[0-9]{3}$/.test(inp_location_post);
 
+	if (inp_location_address === '' || inp_location_post === '' || inp_location_city === '' || inp_location_phone === '')
+	{
+		modal_handler('Następujące pola muszą być wypełnione: ulica i numer domu/mieszkania, kod pocztowy, miejscowość, numer telefonu.');
+		return;
+	}
+
 	if (!post_regex)
 	{
 		modal_handler('Kod pocztowy w złym formacie! Użyj formatu XY-ABC.');
