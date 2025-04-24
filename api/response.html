@@ -17,7 +17,7 @@
 			{ url: '../data/osp.csv', label: 'OSP' },
 			{ url: '../data/psp.csv', label: 'PSP' }
 		], function() {
-			document.body.innerText = JSON.stringify(units_list[random_int(0, units_list.length - 1)], null, 4);
+			document.documentElement.innerHTML = `<pre>${JSON.stringify(units_list[random_int(0, units_list.length - 1)], null, 4)}</pre>`;
 		});
 	</script>
 </body>
