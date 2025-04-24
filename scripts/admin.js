@@ -12,6 +12,18 @@ let firecar_count = 0;
 let fireman_index = 0;
 let firecar_index = 0;
 
+const firecar_model = [
+	'MAN',
+	'Scania',
+	'Mercedes-Benz',
+	'Iveco',
+	'Volvo',
+	'STAR',
+	'Jelcz',
+	'Żuk',
+	'Tatra',
+];
+
 const firecar_types = [
 	'GBA',
 	'GCBA',
@@ -139,8 +151,8 @@ function assign_content()
 			<div class="admin-input-group">
 				<span class="admin-input-header">Dane kontaktowe</span>
 				<input type="text" id="admin-input-text-unit-contact-name" class="input-text admin-input-text" placeholder="Imię i nazwisko"  value="${chance.name()}" readonly>
-				<input type="text" id="admin-input-text-unit-contact-phone" class="input-text admin-input-text" placeholder="Nr. telefonu" value="${chance.phone()}" readonly>
-				<input type="text" id="admin-input-text-unit-contact-mail" class="input-text admin-input-text" placeholder="Adres e-mail" value="${chance.email()}" readonly>
+				<input type="text" id="admin-input-text-unit-contact-phone" class="input-text admin-input-text" placeholder="Nr. telefonu" value="+48 ${chance.phone({formatted: false}).substring(0, 9)}" readonly>
+				<input type="text" id="admin-input-text-unit-contact-mail" class="input-text admin-input-text" placeholder="Adres e-mail" value="${chance.email({domain: 'eremiza.pl'})}" readonly>
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Liczba strażaków</span>
@@ -259,11 +271,11 @@ function add_to_list(type, unit_type)
 	let new_firecar = `
 	<tr>
 		<td>${firecar_index + 1}</td>
-		<td>[model]</td>
+		<td>${firecar_model[random_int(0, firecar_model.length - 1)]}</td>
 		<td>${firecar_types[random_int(0, firecar_types.length - 1)]}</td>
 		<td>${random_int(100, 999)}[${alphabet_upper[random_int(0, alphabet_upper.length - 1)]}]${random_int(10, 99)}</td>
 		<td>${firecar_state[random_int(0, firecar_state.length - 1)]}</td>
-		<td>[ost. przegląd]</td>
+		<td>${get_random_time()}</td>
 		<td>${chance.name()},<br>${chance.name()}</td>
 	</tr>`;
 
@@ -371,11 +383,11 @@ function change_display_content(idx)
 				document.getElementById('firecar-list').innerHTML += `
 				<tr>
 					<td>${i + 1}</td>
-					<td>[model]</td>
+					<td>${firecar_model[random_int(0, firecar_model.length - 1)]}</td>
 					<td>${firecar_types[random_int(0, firecar_types.length - 1)]}</td>
 					<td>${random_int(100, 999)}[${alphabet_upper[random_int(0, alphabet_upper.length - 1)]}]${random_int(10, 99)}</td>
 					<td>${firecar_state[random_int(0, firecar_state.length - 1)]}</td>
-					<td>[ost. przegląd]</td>
+					<td>${get_random_time()}</td>
 					<td>${chance.name()},<br>${chance.name()}</td>
 				</tr>`;
 				firecar_index = i + 1;
