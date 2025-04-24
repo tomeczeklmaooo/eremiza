@@ -4,9 +4,9 @@ class eRemizaBrowserAlert extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
 			<div id="browser-alert">
-				Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})
+				W przeglądarce której używasz niektóre funkcje mogą nie być dostępne. Żeby skorzystać z wszystkich funkcji użyj przeglądarki Mozilla Firefox.
 			</div>
-			`;
+		`;
 	}
 }
 
@@ -25,7 +25,7 @@ class eRemizaHeader extends HTMLElement {
 					<nav-item class="btn btn-cta" onclick="window.location.href = 'new-report.html'">Nowe zgłoszenie</nav-item>
 				</nav>
 			</header>
-			`;
+		`;
 	}
 }
 
