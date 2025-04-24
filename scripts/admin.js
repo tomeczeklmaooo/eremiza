@@ -9,6 +9,8 @@ const alphabet_upper = alphabet_lower.toUpperCase();
 let random_unit;
 let firemen_count = 0;
 let firecar_count = 0;
+let fireman_index = 0;
+let firecar_index = 0;
 
 const firecar_types = [
 	'GBA',
@@ -186,7 +188,10 @@ function assign_content()
 			</div>
 			<div class="admin-input-group">
 				<button class="input-btn" onclick="add_to_list('person', '${random_unit.type}')"><i class="fa-solid fa-plus"></i> Dodaj strażaka</button>
-				<button class="input-btn" onclick="remove_from_list('person', '${random_unit.type}')"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
+				<button class="input-btn" onclick="remove_from_list('person')"><i class="fa-solid fa-minus"></i> Usuń strażaka</button>
+			</div>
+			<div class="admin-input-group">
+				<span style="user-select: none;">Dodawanie dodaje strażaka na koniec, a usuwanie usuwa ostatniego z listy.</span>
 			</div>
 		</div>
 		<div class="admin-settings-inner-container-column">
@@ -221,7 +226,10 @@ function assign_content()
 			</div>
 			<div class="admin-input-group">
 				<button class="input-btn" onclick="add_to_list('car', '${random_unit.type}')"><i class="fa-solid fa-plus"></i> Dodaj wóz</button>
-				<button class="input-btn" onclick="remove_from_list('car', '${random_unit.type}')"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
+				<button class="input-btn" onclick="remove_from_list('car')"><i class="fa-solid fa-minus"></i> Usuń wóz</button>
+			</div>
+			<div class="admin-input-group">
+				<span style="user-select: none;">Dodawanie dodaje wóz na koniec, a usuwanie usuwa ostatni z listy.</span>
 			</div>
 		</div>
 	</div>
@@ -250,56 +258,84 @@ function add_to_list(type, unit_type)
 {
 	let new_firecar = `
 	<tr>
-		<td>[id]</td>
+		<td>${firecar_index + 1}</td>
 		<td>[model]</td>
-		<td>[typ]</td>
-		<td>[nr. operacyjny]</td>
-		<td>[stan]</td>
+		<td>${firecar_types[random_int(0, firecar_types.length - 1)]}</td>
+		<td>${random_int(100, 999)}[${alphabet_upper[random_int(0, alphabet_upper.length - 1)]}]${random_int(10, 99)}</td>
+		<td>${firecar_state[random_int(0, firecar_state.length - 1)]}</td>
 		<td>[ost. przegląd]</td>
-		<td>[kierowcy]</td>
+		<td>${chance.name()},<br>${chance.name()}</td>
 	</tr>`;
 
 	let new_fireman = `
 	<tr>
-		<td>[id]</td>
-		<td>[imię i nazwisko]</td>
-		<td>[stopień]</td>
-		<td>[specjalizacja]</td>
+		<td>${fireman_index + 1}</td>
+		<td>${chance.name()}</td>
+		<td>${firemen_rank[random_int(0, firemen_rank.length - 1)]}</td>
+		<td>${firemen_specialization[random_int(0, firemen_specialization.length - 1)]}</td>
 	</tr>`;
 
 	if (type === 'car')
 	{
+		let rows = document.querySelector('#firecar-list').rows.length;
 		if (unit_type === 'OSP')
 		{
-			if (document.querySelector('#firecar-list').rows.length != firecar_limit_osp)
+			if (rows != firecar_limit_osp)
 			{
 				document.getElementById('firecar-list').innerHTML += new_firecar;
 			}
+			if (firecar_index == firecar_limit_osp) firecar_index = firecar_limit_osp;
+			else firecar_index++;
 		}
 		else if (unit_type === 'PSP')
 		{
-			if (document.querySelector('#firecar-list').rows.length != firecar_limit_psp)
+			if (rows != firecar_limit_psp)
 			{
 				document.getElementById('firecar-list').innerHTML += new_firecar;
 			}
+			if (firecar_index == firecar_limit_psp) firecar_index = firecar_limit_psp;
+			else firecar_index++;
 		}
 	}
 	else if (type === 'person')
 	{
+		let rows = document.querySelector('#firemen-list').rows.length;
 		if (unit_type === 'OSP')
 		{
-			if (document.querySelector('#firemen-list').rows.length != firemen_limit_osp)
+			if (rows != firemen_limit_osp)
 			{
 				document.getElementById('firemen-list').innerHTML += new_fireman;
 			}
+			if (fireman_index == firemen_limit_osp) fireman_index = firemen_limit_osp;
+			else fireman_index++;
 		}
 		else if (unit_type === 'PSP')
 		{
-			if (document.querySelector('#firemen-list').rows.length != firemen_limit_psp)
+			if (rows != firemen_limit_psp)
 			{
 				document.getElementById('firemen-list').innerHTML += new_fireman;
 			}
+			if (fireman_index == firemen_limit_psp) fireman_index = firemen_limit_psp;
+			else fireman_index++;
 		}
+	}
+}
+
+function remove_from_list(type)
+{
+	if (type === 'car')
+	{
+		let rows = document.querySelector('#firecar-list').rows.length;
+		document.getElementById('firecar-list').deleteRow(rows - 1)
+		if (rows == 0) firecar_index = 0;
+		else firecar_index--;
+	}
+	else if (type === 'person')
+	{
+		let rows = document.querySelector('#firemen-list').rows.length;
+		document.getElementById('firemen-list').deleteRow(rows - 1)
+		if (rows == 0) fireman_index = 0;
+		else fireman_index--;
 	}
 }
 
@@ -325,23 +361,25 @@ function change_display_content(idx)
 					<td>${firemen_rank[random_int(0, firemen_rank.length - 1)]}</td>
 					<td>${firemen_specialization[random_int(0, firemen_specialization.length - 1)]}</td>
 				</tr>`;
+				fireman_index = i + 1;
 			}
 			break;
 		case 2:
 			settings_display.innerHTML = firecar_mgr;
 			for (let i = 0; i < firecar_count; i++)
-				{
-					document.getElementById('firecar-list').innerHTML += `
-					<tr>
-						<td>${i + 1}</td>
-						<td>[model]</td>
-						<td>${firecar_types[random_int(0, firecar_types.length - 1)]}</td>
-						<td>${random_int(100, 999)}[${alphabet_upper[random_int(0, alphabet_upper.length - 1)]}]${random_int(10, 99)}</td>
-						<td>${firecar_state[random_int(0, firecar_state.length - 1)]}</td>
-						<td>[ost. przegląd]</td>
-						<td>${chance.name()},<br>${chance.name()}</td>
-					</tr>`;
-				}
+			{
+				document.getElementById('firecar-list').innerHTML += `
+				<tr>
+					<td>${i + 1}</td>
+					<td>[model]</td>
+					<td>${firecar_types[random_int(0, firecar_types.length - 1)]}</td>
+					<td>${random_int(100, 999)}[${alphabet_upper[random_int(0, alphabet_upper.length - 1)]}]${random_int(10, 99)}</td>
+					<td>${firecar_state[random_int(0, firecar_state.length - 1)]}</td>
+					<td>[ost. przegląd]</td>
+					<td>${chance.name()},<br>${chance.name()}</td>
+				</tr>`;
+				firecar_index = i + 1;
+			}
 			break;
 		case 3:
 			settings_display.innerHTML = last_alarms;
