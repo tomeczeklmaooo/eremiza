@@ -18,8 +18,8 @@ function add_units_to_map()
 					<circle cx="18" cy="18" r="15" fill="${color}" stroke="white" stroke-width="1"/>
 				</svg>
 			`)}`,
-			iconSize: [12, 12],
-			iconAnchor: [6, 6]
+			iconSize: [20, 20],
+			iconAnchor: [10, 10]
 		});
 		const marker = L.marker([units_list[i].coordinates.lat, units_list[i].coordinates.lon], { icon });
 

@@ -38,7 +38,7 @@ function check_browser()
 		if (platform.name.toLowerCase() !== 'firefox')
 		{
 			document.querySelector('body').innerHTML = `<eremiza-browser-alert></eremiza-browser-alert>${body_content_initial}`;
-			document.getElementById('browser-alert').innerHTML = `Strona działa lepiej w przeglądarce Mozilla Firefox (używasz ${platform.name} ${platform.version})`;
+			document.getElementById('browser-alert').innerHTML = `W przeglądarce której używasz niektóre funkcje mogą nie być dostępne. Żeby skorzystać z wszystkich funkcji użyj przeglądarki Mozilla Firefox.`;
 		}
 	}
 }
