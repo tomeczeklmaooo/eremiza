@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* { font-family: monospace; white-space: pre; }
+	</style>
+</head>
+<body>
+	<script src="../scripts/script.js"></script>
+	<script src="../scripts/platform.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+	<script src="../scripts/csv.js"></script>
+	<script>
+		load_all_units([
+			{ url: '../data/osp.csv', label: 'OSP' },
+			{ url: '../data/psp.csv', label: 'PSP' }
+		], function() {
+			document.body.innerText = JSON.stringify(units_list[random_int(0, units_list.length - 1)], null, 4);
+		});
+	</script>
+</body>
+</html>
