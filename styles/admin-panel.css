@@ -125,7 +125,7 @@
 	font-weight: 600;
 }
 
-.admin-input-text
+.admin-input-text, .admin-input-select
 {
 	width: 300px;
 	height: 40px;

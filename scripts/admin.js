@@ -164,7 +164,7 @@ function assign_content()
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Harmonogram dyżurów</span>
-				<span>TABLE_HERE</span>
+				<span>brak tabeli</span>
 			</div>
 			<div class="admin-input-group">
 				<span class="admin-input-header">Status remizy</span>
@@ -209,7 +209,7 @@ function assign_content()
 		<div class="admin-settings-inner-container-column">
 			<div class="admin-input-group">
 				<span class="admin-input-header">Historia udziału w akcjach</span>
-				<span>TABLE_HERE:FILTER_BY_NAME</span>
+				<span>brak tabeli</span>
 			</div>
 		</div>
 	</div>
@@ -253,13 +253,25 @@ function assign_content()
 		<div class="admin-settings-inner-container-column">
 			<div class="admin-input-group">
 				<span class="admin-input-header">Lista zgłoszeń</span>
-				<span>TABLE_HERE</span>
+				<span>brak tabeli</span>
 			</div>
 		</div>
 		<div class="admin-settings-inner-container-column">
 			<div class="admin-input-group">
 				<span class="admin-input-header">Filtry</span>
-				<span>FILTER_LIST:DATETIME/LOCATION/TYPE/UNITS/STATUS</span>
+				<select class="input-select admin-input-select">
+					<option>Data/czas (od najnowszych)</option>
+					<option>Data/czas (od najstarszych)</option>
+					<option>Lokalizacja (od najbliższych)</option>
+					<option>Lokalizacja (od najdalszych)</option>
+					<option>Rodzaj (alfabetycznie rosnąco)</option>
+					<option>Rodzaj (alfabetycznie malejąco)</option>
+					<option>Ilość jednostek (malejąco)</option>
+					<option>Ilość jednostek (rosnąco)</option>
+					<option>Status (alfabetycznie rosnąco)</option>
+					<option>Status (alfabetycznie malejąco)</option>
+				</select>
+				<span>(filtry nie działają bo tabeli nie ma)</span>
 			</div>
 		</div>
 	</div>
