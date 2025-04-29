@@ -55,6 +55,11 @@ function send_report()
 			break;
 	}
 
+	for (var i = 0; i < units_list.length; i++)
+	{
+		if (inp_location_city.trim().toLowerCase() === units_list[i].city.toLowerCase()) reported_to = units_list[i].name;
+	}
+
 	let message = `
 	<strong>Wysłano zgłoszenie do jednostki ${reported_to}</strong><br>
 	Lokalizacja: ${inp_location_address}, ${inp_location_post} ${inp_location_city}<br>
