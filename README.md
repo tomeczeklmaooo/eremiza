@@ -34,7 +34,10 @@ Ani trochę prawdziwe to nie jest, taki wyśmiewanie się trochę z tego, że 
 Nie mam pojęcia kto chciałby się na to zapisać, tutaj po kliknięciu w link i wpisaniu maila zostanie wysłana jednorazowo wiadomość i to tyle. (fake)
 
 ### OpenRemizaAPI
-W założeniu ma zwracać informacje o wybranej remizie, np. ilość wozów na akcji/w remizie, ostatni alarm, itp., ale tak na serio to będzie zawsze zwracać zawartość pliku `api/response.json`, czyli jakieś fake informacje.
+To bardziej jest `random remiza API`, bez tych róźnych rzeczy co były w `api/response.json` (który usunąłem).
+
+#### Jak używać
+Nie da się.
 
 ### Repozytorium GitHub
 Mówi samo za siebie

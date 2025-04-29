@@ -94,7 +94,7 @@ const ai_responses = {
 	],
 	// HELP RESPONSES
 	help: [
-		'Żeby zobaczyć status danej jednostki, wpisz <b>status MIEJSCOWOŚĆ</b> (zastąp MIEJSCOWOŚĆ faktyczną nazwą, np. Poznań).<br>Żeby zobaczyć ostatnie 5 alarmów danej jednostki, komenda wygląda analogicznie do statusu, tylko zastąp słowo kluczowe <b>status</b> słowem <b>alarm</b>'
+		'Żeby zobaczyć status danej jednostki, wpisz <b>status MIEJSCOWOŚĆ</b> (zastąp MIEJSCOWOŚĆ faktyczną nazwą, np. Poznań).<br>Żeby zobaczyć ostatni alarm dla danej jednostki, komenda wygląda analogicznie do statusu, tylko zastąp słowo kluczowe <b>status</b> słowem <b>alarm</b>'
 	],
 	// ABILITIES RESPONSES
 	abilities: [
