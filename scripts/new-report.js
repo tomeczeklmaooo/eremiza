@@ -55,10 +55,21 @@ function send_report()
 			break;
 	}
 
+	let all_units_in_city = [];
+
 	for (var i = 0; i < units_list.length; i++)
 	{
-		if (inp_location_city.trim().toLowerCase() === units_list[i].city.toLowerCase()) reported_to = units_list[i].name;
+		if (inp_location_city.trim().toLowerCase() === units_list[i].city.toLowerCase()) all_units_in_city.push(units_list[i].name);
 	}
+
+	console.log(all_units_in_city);
+
+	if (all_units_in_city.length == 0)
+	{
+		modal_handler('Nie ma żadnej jednostki w tej miejscowości.');
+		return;
+	}
+	else reported_to = all_units_in_city[random_int(0, all_units_in_city.length - 1)];
 
 	let message = `
 	<strong>Wysłano zgłoszenie do jednostki ${reported_to}</strong><br>
